@@ -1,0 +1,14 @@
+package com.blx.service.impl;
+
+import com.blx.pojo.Staff;
+import com.blx.service.StaffService;
+
+public class StaffServiceImpl implements StaffService {
+
+	@Override
+	public Staff login(String loginPhone, String loginCode) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

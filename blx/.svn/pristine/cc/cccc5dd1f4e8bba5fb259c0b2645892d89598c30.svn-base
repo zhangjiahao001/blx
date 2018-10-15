@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blx.mapper.ArticleMapper" >
+  <resultMap id="BaseResultMap" type="com.blx.pojo.Article" >
+    <id column="article_Id" property="articleId" jdbcType="INTEGER" />
+    <result column="article_Title" property="articleTitle" jdbcType="VARCHAR" />
+    <result column="article_Sub_Title" property="articleSubTitle" jdbcType="VARCHAR" />
+    <result column="article_DateTime" property="articleDatetime" jdbcType="TIMESTAMP" />
+    <result column="article_Content" property="articleContent" jdbcType="VARCHAR" />
+    <result column="article_Writer_Id" property="articleWriterId" jdbcType="INTEGER" />
+    <result column="article_Img_Id" property="articleImgId" jdbcType="INTEGER" />
+    <result column="article_Img_Url" property="articleImgUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    article_Id, article_Title, article_Sub_Title, article_DateTime, article_Content, 
+    article_Writer_Id, article_Img_Id, article_Img_Url
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.blx.pojo.ArticleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from article
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from article
+    where article_Id = #{articleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from article
+    where article_Id = #{articleId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.blx.pojo.ArticleExample" >
+    delete from article
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.blx.pojo.Article" >
+    insert into article (article_Id, article_Title, article_Sub_Title, 
+      article_DateTime, article_Content, article_Writer_Id, 
+      article_Img_Id, article_Img_Url)
+    values (#{articleId,jdbcType=INTEGER}, #{articleTitle,jdbcType=VARCHAR}, #{articleSubTitle,jdbcType=VARCHAR}, 
+      #{articleDatetime,jdbcType=TIMESTAMP}, #{articleContent,jdbcType=VARCHAR}, #{articleWriterId,jdbcType=INTEGER}, 
+      #{articleImgId,jdbcType=INTEGER}, #{articleImgUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.blx.pojo.Article" >
+    insert into article
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="articleId != null" >
+        article_Id,
+      </if>
+      <if test="articleTitle != null" >
+        article_Title,
+      </if>
+      <if test="articleSubTitle != null" >
+        article_Sub_Title,
+      </if>
+      <if test="articleDatetime != null" >
+        article_DateTime,
+      </if>
+      <if test="articleContent != null" >
+        article_Content,
+      </if>
+      <if test="articleWriterId != null" >
+        article_Writer_Id,
+      </if>
+      <if test="articleImgId != null" >
+        article_Img_Id,
+      </if>
+      <if test="articleImgUrl != null" >
+        article_Img_Url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="articleId != null" >
+        #{articleId,jdbcType=INTEGER},
+      </if>
+      <if test="articleTitle != null" >
+        #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleSubTitle != null" >
+        #{articleSubTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleDatetime != null" >
+        #{articleDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articleContent != null" >
+        #{articleContent,jdbcType=VARCHAR},
+      </if>
+      <if test="articleWriterId != null" >
+        #{articleWriterId,jdbcType=INTEGER},
+      </if>
+      <if test="articleImgId != null" >
+        #{articleImgId,jdbcType=INTEGER},
+      </if>
+      <if test="articleImgUrl != null" >
+        #{articleImgUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.blx.pojo.ArticleExample" resultType="java.lang.Integer" >
+    select count(*) from article
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update article
+    <set >
+      <if test="record.articleId != null" >
+        article_Id = #{record.articleId,jdbcType=INTEGER},
+      </if>
+      <if test="record.articleTitle != null" >
+        article_Title = #{record.articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleSubTitle != null" >
+        article_Sub_Title = #{record.articleSubTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleDatetime != null" >
+        article_DateTime = #{record.articleDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.articleContent != null" >
+        article_Content = #{record.articleContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleWriterId != null" >
+        article_Writer_Id = #{record.articleWriterId,jdbcType=INTEGER},
+      </if>
+      <if test="record.articleImgId != null" >
+        article_Img_Id = #{record.articleImgId,jdbcType=INTEGER},
+      </if>
+      <if test="record.articleImgUrl != null" >
+        article_Img_Url = #{record.articleImgUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update article
+    set article_Id = #{record.articleId,jdbcType=INTEGER},
+      article_Title = #{record.articleTitle,jdbcType=VARCHAR},
+      article_Sub_Title = #{record.articleSubTitle,jdbcType=VARCHAR},
+      article_DateTime = #{record.articleDatetime,jdbcType=TIMESTAMP},
+      article_Content = #{record.articleContent,jdbcType=VARCHAR},
+      article_Writer_Id = #{record.articleWriterId,jdbcType=INTEGER},
+      article_Img_Id = #{record.articleImgId,jdbcType=INTEGER},
+      article_Img_Url = #{record.articleImgUrl,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.blx.pojo.Article" >
+    update article
+    <set >
+      <if test="articleTitle != null" >
+        article_Title = #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleSubTitle != null" >
+        article_Sub_Title = #{articleSubTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleDatetime != null" >
+        article_DateTime = #{articleDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articleContent != null" >
+        article_Content = #{articleContent,jdbcType=VARCHAR},
+      </if>
+      <if test="articleWriterId != null" >
+        article_Writer_Id = #{articleWriterId,jdbcType=INTEGER},
+      </if>
+      <if test="articleImgId != null" >
+        article_Img_Id = #{articleImgId,jdbcType=INTEGER},
+      </if>
+      <if test="articleImgUrl != null" >
+        article_Img_Url = #{articleImgUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where article_Id = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.blx.pojo.Article" >
+    update article
+    set article_Title = #{articleTitle,jdbcType=VARCHAR},
+      article_Sub_Title = #{articleSubTitle,jdbcType=VARCHAR},
+      article_DateTime = #{articleDatetime,jdbcType=TIMESTAMP},
+      article_Content = #{articleContent,jdbcType=VARCHAR},
+      article_Writer_Id = #{articleWriterId,jdbcType=INTEGER},
+      article_Img_Id = #{articleImgId,jdbcType=INTEGER},
+      article_Img_Url = #{articleImgUrl,jdbcType=VARCHAR}
+    where article_Id = #{articleId,jdbcType=INTEGER}
+  </update>
+</mapper>

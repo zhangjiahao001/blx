@@ -1,0 +1,9 @@
+package com.blx.service;
+/**
+ * 用户类 逻辑层接口
+ * @author Administrator
+ *
+ */
+public interface UserService {
+	
+}

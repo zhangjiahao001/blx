@@ -1,0 +1,36 @@
+/* All styles created for demo purposes only, you may not need this for your project */
+.demo-button button {
+  margin-bottom: 5px; }
+
+.demo-icons li {
+  margin-bottom: 50px;
+  text-align: center; }
+
+.demo-icons .lnr,
+.demo-icons .fa {
+  font-size: 28px; }
+
+.demo-icons .cssclass {
+  display: block;
+  margin-top: 5px;
+  margin-left: 5px; }
+  
+#tijiao{
+	padding-left: 30%;
+}
+#buess{
+	text-align: center;
+}
+#articleDateTime{
+	width:20%;
+}
+.page li{
+	list-style:none;
+	float: left;
+}
+#staffBrithday{
+	width:20%;
+}
+
+
+/*# sourceMappingURL=demo.css.map */

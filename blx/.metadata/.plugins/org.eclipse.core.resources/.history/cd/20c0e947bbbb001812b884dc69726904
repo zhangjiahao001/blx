@@ -1,0 +1,30 @@
+package com.blx.mapper;
+
+import com.blx.pojo.JPositionTown;
+import com.blx.pojo.JPositionTownExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface JPositionTownMapper {
+    int countByExample(JPositionTownExample example);
+
+    int deleteByExample(JPositionTownExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(JPositionTown record);
+
+    int insertSelective(JPositionTown record);
+
+    List<JPositionTown> selectByExample(JPositionTownExample example);
+
+    JPositionTown selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") JPositionTown record, @Param("example") JPositionTownExample example);
+
+    int updateByExample(@Param("record") JPositionTown record, @Param("example") JPositionTownExample example);
+
+    int updateByPrimaryKeySelective(JPositionTown record);
+
+    int updateByPrimaryKey(JPositionTown record);
+}

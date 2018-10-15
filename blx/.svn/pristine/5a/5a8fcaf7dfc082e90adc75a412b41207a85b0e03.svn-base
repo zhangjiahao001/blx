@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.blx.pojo.Staff"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="com.blx.mapper.StaffMapper"/>
+<fullyQualifiedTypeName name="com.blx.utils.MD5"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="com.blx.pojo.StaffExample"/>
+<fullyQualifiedTypeName name="com.blx.pojo.StaffExample.Criteria"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseBody"/>
+<fullyQualifiedTypeName name="org.springframework.web.servlet.mvc.support.RedirectAttributes"/>
+<fullyQualifiedTypeName name="net.sf.json.JSON"/>
+<fullyQualifiedTypeName name="org.springframework.web.servlet.ModelAndView"/>
+<fullyQualifiedTypeName name="com.alibaba.fastjson.JSON"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+<fullyQualifiedTypeName name="com.blx.pojo.Address"/>
+<fullyQualifiedTypeName name="com.blx.pojo.AddressExample"/>
+<fullyQualifiedTypeName name="com.blx.pojo.ArticleExample"/>
+<fullyQualifiedTypeName name="com.blx.pojo.Article"/>
+<fullyQualifiedTypeName name="com.blx.pojo.Business"/>
+<fullyQualifiedTypeName name="com.blx.pojo.Company"/>
+<fullyQualifiedTypeName name="com.blx.pojo.CompanyExample"/>
+<fullyQualifiedTypeName name="com.blx.pojo.Orders"/>
+<fullyQualifiedTypeName name="com.blx.pojo.OrdersExample"/>
+<fullyQualifiedTypeName name="com.blx.pojo.User"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.blx.pojo.UserExample"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,86 @@
+package com.blx.controller;
+
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+<<<<<<< .mine
+||||||| .r50
+import com.blx.pojo.Business;
+import com.blx.pojo.BusinessExample;
+import com.blx.pojo.BusinessExample.Criteria;
+import com.blx.service.businessService;
+
+=======
+
+>>>>>>> .r51
+@Controller
+@RequestMapping("/skip")
+public class SkipController {
+	
+	/**
+	 * Ìø×ªÖÁµÇÂ¼Ò³Ãæ
+	 * @return
+	 */
+	@RequestMapping(value="/back/loginView.html")
+	public String loginView(){
+		return "/BackGround/login";
+	}
+	
+	@RequestMapping(value="/back/index.html")
+	public String BackIndexView(){
+		return "/BackGround/index";
+	}
+	
+	@RequestMapping("/about.html")
+	public ModelAndView aboutView(ModelAndView modelAndView){
+		modelAndView.setViewName("/WebSite/about");
+		return modelAndView;
+	}
+	public ModelAndView aboutView(ModelAndView modelAndView){
+		modelAndView.addObject("aboutList", getbusinessList());
+		modelAndView.setViewName("/WebSite/about");
+		return modelAndView;
+=======
+	public String aboutView(){
+		return "/WebSite/about";
+>>>>>>> .r51
+	}
+	
+	
+	@RequestMapping("/contact.html")
+	public String contactView(){
+		return "/WebSite/contact";
+	}
+	
+	@RequestMapping("/index.html")
+<<<<<<< .mine
+	public ModelAndView indexView(ModelAndView modelAndView){
+		modelAndView.setViewName("/WebSite/index");
+		return modelAndView;
+||||||| .r50
+	public ModelAndView indexView(ModelAndView modelAndView){
+		modelAndView.addObject("indexList", getbusinessList());
+		modelAndView.setViewName("/WebSite/index");
+		return modelAndView;
+=======
+	public String indexView(){
+		return "/WebSite/index";
+>>>>>>> .r51
+	}
+	
+	@RequestMapping("/pricing.html")
+	public String pricingView(){
+		return "/WebSite/pricing";
+	}
+	
+	@RequestMapping("/services.html")
+	public String servicesView(){
+		return "/WebSite/services";
+	}
+	
+	@RequestMapping("/work.html")
+	public String workView(){
+		return "/WebSite/work";
+	}
+}

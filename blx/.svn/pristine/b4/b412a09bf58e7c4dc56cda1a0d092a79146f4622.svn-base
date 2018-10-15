@@ -1,0 +1,16 @@
+package com.blx.service;
+
+import com.blx.pojo.Address;
+/**
+ * 地址类 逻辑层接口
+ * @author Administrator
+ *
+ */
+public interface AddressService {
+	/**
+	 * 动态新增地址
+	 * @param address
+	 * @return
+	 */
+	boolean InserAddressByAddress(Address address);
+}

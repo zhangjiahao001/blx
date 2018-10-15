@@ -1,0 +1,33 @@
+package com.blx.pojo;
+
+public class JPositionProvice {
+    private Integer id;
+
+    private Integer proviceId;
+
+    private String proviceName;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getProviceId() {
+        return proviceId;
+    }
+
+    public void setProviceId(Integer proviceId) {
+        this.proviceId = proviceId;
+    }
+
+    public String getProviceName() {
+        return proviceName;
+    }
+
+    public void setProviceName(String proviceName) {
+        this.proviceName = proviceName == null ? null : proviceName.trim();
+    }
+}

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+	<!-- 扫描控制器所在的包 -->
+	<context:component-scan base-package="com.blx.controller" />
+
+	<!-- 启用我们使用注解的的请求 -->
+	<mvc:annotation-driven />
+	 <!-- conversion-service="conversionService" -->
+	<mvc:resources location="/WEB-INF/static/" mapping="/WebSiteStatic/**"/>
+	<!-- <mvc:resources location="/WEB-INF/WebSiteStatic/images/" mapping="/WebSiteStatic/images/**"/>
+	<mvc:resources location="/WEB-INF/WebSiteStatic/js/" mapping="/WebSiteStatic/js/**"/> -->
+	<mvc:resources location="/WEB-INF/lib/" mapping="/lib/**"/>
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="favorParameter" value="true" />
+		<property name="defaultContentType" value="text/html" />
+		<property name="mediaTypes">
+			<map>
+				<entry key="html" value="text/html;charset=utf-8" />
+				<entry key="json" value="application/json;charset=utf-8" />
+				<entry key="xml" value="application/xml;charset=utf-8" />
+			</map>
+		</property>
+		<property name="viewResolvers">
+			<list>
+				<bean
+					class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+					<property name="prefix" value="/WEB-INF/view/" />
+					<property name="suffix" value=".jsp" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<!-- 把ByteArray加在Json前面 -->
+				<bean
+					class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+				<bean id="jsonHttpMessageConverter"
+					class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/plain;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<!-- <mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/back/**" />
+			<bean class="com.blx.intercepter.LoginIntercepter" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/back/**" />
+			<mvc:mapping path="/skip/**" />
+			<bean class="com.blx.intercepter.SkipIntercepter" />
+		</mvc:interceptor>
+	</mvc:interceptors> -->
+</beans>

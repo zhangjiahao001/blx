@@ -1,0 +1,24 @@
+package com.blx.service;
+
+import java.util.List;
+
+import com.blx.pojo.Orders;
+import com.blx.pojo.OrdersExample;
+
+/**
+ * 订单类 逻辑层接口
+ * @author Administrator
+ *
+ */
+public interface OrdersService {
+	
+	boolean InsertOrdersByOrders(Orders orders);
+	
+	boolean DeleteOrdersByOrdersId(Integer ordersId);
+	
+	boolean UpdateOrdersByOrders(Orders orders);
+	
+	List<Orders> SelectOrdersByCondition(OrdersExample example);
+	
+	Orders SelectOrdersByOrdersId(Integer ordersId);
+}

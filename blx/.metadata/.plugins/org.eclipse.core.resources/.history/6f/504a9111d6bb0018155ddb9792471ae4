@@ -1,0 +1,44 @@
+package com.blx.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/skip")
+public class SkipController {
+	
+	@RequestMapping("/about.html")
+	public String aboutView(){
+		return "/WebSite/about";
+	}
+	
+	@RequestMapping("/cccc.html")
+	public String cxcxcxc(){
+		return "/WebSite/cccc";
+	}
+	
+	@RequestMapping("/contact.html")
+	public String contactView(){
+		return "/WebSite/contact";
+	}
+	
+	@RequestMapping("/index.html")
+	public String indexView(){
+		return "/WebSite/index";
+	}
+	
+	@RequestMapping("/pricing.html")
+	public String pricingView(){
+		return "/WebSite/pricing";
+	}
+	
+	@RequestMapping("/services.html")
+	public String servicesView(){
+		return "/WebSite/services";
+	}
+	
+	@RequestMapping("/work.html")
+	public String workView(){
+		return "/WebSite/work";
+	}
+}

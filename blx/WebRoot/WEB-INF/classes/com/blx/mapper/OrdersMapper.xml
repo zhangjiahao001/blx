@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blx.mapper.OrdersMapper" >
+  <resultMap id="BaseResultMap" type="com.blx.pojo.Orders" >
+    <id column="Order_Id" property="orderId" jdbcType="INTEGER" />
+    <result column="Order_Name" property="orderName" jdbcType="VARCHAR" />
+    <result column="Order_Create_DateTime" property="orderCreateDatetime" jdbcType="TIMESTAMP" />
+    <result column="Order_User_Id" property="orderUserId" jdbcType="INTEGER" />
+    <result column="Order_Business_Id" property="orderBusinessId" jdbcType="INTEGER" />
+    <result column="Order_Remark" property="orderRemark" jdbcType="VARCHAR" />
+    <result column="Order_Address_Id" property="orderAddressId" jdbcType="INTEGER" />
+    <result column="Order_Number" property="orderNumber" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Order_Id, Order_Name, Order_Create_DateTime, Order_User_Id, Order_Business_Id, Order_Remark, 
+    Order_Address_Id, Order_Number
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.blx.pojo.OrdersExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from orders
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where Order_Id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from orders
+    where Order_Id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.blx.pojo.OrdersExample" >
+    delete from orders
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.blx.pojo.Orders" >
+    insert into orders (Order_Id, Order_Name, Order_Create_DateTime, 
+      Order_User_Id, Order_Business_Id, Order_Remark, 
+      Order_Address_Id, Order_Number)
+    values (#{orderId,jdbcType=INTEGER}, #{orderName,jdbcType=VARCHAR}, #{orderCreateDatetime,jdbcType=TIMESTAMP}, 
+      #{orderUserId,jdbcType=INTEGER}, #{orderBusinessId,jdbcType=INTEGER}, #{orderRemark,jdbcType=VARCHAR}, 
+      #{orderAddressId,jdbcType=INTEGER}, #{orderNumber,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.blx.pojo.Orders" >
+    insert into orders
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        Order_Id,
+      </if>
+      <if test="orderName != null" >
+        Order_Name,
+      </if>
+      <if test="orderCreateDatetime != null" >
+        Order_Create_DateTime,
+      </if>
+      <if test="orderUserId != null" >
+        Order_User_Id,
+      </if>
+      <if test="orderBusinessId != null" >
+        Order_Business_Id,
+      </if>
+      <if test="orderRemark != null" >
+        Order_Remark,
+      </if>
+      <if test="orderAddressId != null" >
+        Order_Address_Id,
+      </if>
+      <if test="orderNumber != null" >
+        Order_Number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="orderName != null" >
+        #{orderName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCreateDatetime != null" >
+        #{orderCreateDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderUserId != null" >
+        #{orderUserId,jdbcType=INTEGER},
+      </if>
+      <if test="orderBusinessId != null" >
+        #{orderBusinessId,jdbcType=INTEGER},
+      </if>
+      <if test="orderRemark != null" >
+        #{orderRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAddressId != null" >
+        #{orderAddressId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.blx.pojo.OrdersExample" resultType="java.lang.Integer" >
+    select count(*) from orders
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update orders
+    <set >
+      <if test="record.orderId != null" >
+        Order_Id = #{record.orderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderName != null" >
+        Order_Name = #{record.orderName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderCreateDatetime != null" >
+        Order_Create_DateTime = #{record.orderCreateDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderUserId != null" >
+        Order_User_Id = #{record.orderUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderBusinessId != null" >
+        Order_Business_Id = #{record.orderBusinessId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderRemark != null" >
+        Order_Remark = #{record.orderRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderAddressId != null" >
+        Order_Address_Id = #{record.orderAddressId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderNumber != null" >
+        Order_Number = #{record.orderNumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update orders
+    set Order_Id = #{record.orderId,jdbcType=INTEGER},
+      Order_Name = #{record.orderName,jdbcType=VARCHAR},
+      Order_Create_DateTime = #{record.orderCreateDatetime,jdbcType=TIMESTAMP},
+      Order_User_Id = #{record.orderUserId,jdbcType=INTEGER},
+      Order_Business_Id = #{record.orderBusinessId,jdbcType=INTEGER},
+      Order_Remark = #{record.orderRemark,jdbcType=VARCHAR},
+      Order_Address_Id = #{record.orderAddressId,jdbcType=INTEGER},
+      Order_Number = #{record.orderNumber,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.blx.pojo.Orders" >
+    update orders
+    <set >
+      <if test="orderName != null" >
+        Order_Name = #{orderName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCreateDatetime != null" >
+        Order_Create_DateTime = #{orderCreateDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderUserId != null" >
+        Order_User_Id = #{orderUserId,jdbcType=INTEGER},
+      </if>
+      <if test="orderBusinessId != null" >
+        Order_Business_Id = #{orderBusinessId,jdbcType=INTEGER},
+      </if>
+      <if test="orderRemark != null" >
+        Order_Remark = #{orderRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAddressId != null" >
+        Order_Address_Id = #{orderAddressId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNumber != null" >
+        Order_Number = #{orderNumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Order_Id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.blx.pojo.Orders" >
+    update orders
+    set Order_Name = #{orderName,jdbcType=VARCHAR},
+      Order_Create_DateTime = #{orderCreateDatetime,jdbcType=TIMESTAMP},
+      Order_User_Id = #{orderUserId,jdbcType=INTEGER},
+      Order_Business_Id = #{orderBusinessId,jdbcType=INTEGER},
+      Order_Remark = #{orderRemark,jdbcType=VARCHAR},
+      Order_Address_Id = #{orderAddressId,jdbcType=INTEGER},
+      Order_Number = #{orderNumber,jdbcType=INTEGER}
+    where Order_Id = #{orderId,jdbcType=INTEGER}
+  </update>
+</mapper>

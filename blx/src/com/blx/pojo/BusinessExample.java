@@ -1,0 +1,850 @@
+package com.blx.pojo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class BusinessExample {
+    protected String orderByClause;
+
+    protected boolean distinct;
+
+    protected List<Criteria> oredCriteria;
+
+    public BusinessExample() {
+        oredCriteria = new ArrayList<Criteria>();
+    }
+
+    public void setOrderByClause(String orderByClause) {
+        this.orderByClause = orderByClause;
+    }
+
+    public String getOrderByClause() {
+        return orderByClause;
+    }
+
+    public void setDistinct(boolean distinct) {
+        this.distinct = distinct;
+    }
+
+    public boolean isDistinct() {
+        return distinct;
+    }
+
+    public List<Criteria> getOredCriteria() {
+        return oredCriteria;
+    }
+
+    public void or(Criteria criteria) {
+        oredCriteria.add(criteria);
+    }
+
+    public Criteria or() {
+        Criteria criteria = createCriteriaInternal();
+        oredCriteria.add(criteria);
+        return criteria;
+    }
+
+    public Criteria createCriteria() {
+        Criteria criteria = createCriteriaInternal();
+        if (oredCriteria.size() == 0) {
+            oredCriteria.add(criteria);
+        }
+        return criteria;
+    }
+
+    protected Criteria createCriteriaInternal() {
+        Criteria criteria = new Criteria();
+        return criteria;
+    }
+
+    public void clear() {
+        oredCriteria.clear();
+        orderByClause = null;
+        distinct = false;
+    }
+
+    protected abstract static class GeneratedCriteria {
+        protected List<Criterion> criteria;
+
+        protected GeneratedCriteria() {
+            super();
+            criteria = new ArrayList<Criterion>();
+        }
+
+        public boolean isValid() {
+            return criteria.size() > 0;
+        }
+
+        public List<Criterion> getAllCriteria() {
+            return criteria;
+        }
+
+        public List<Criterion> getCriteria() {
+            return criteria;
+        }
+
+        protected void addCriterion(String condition) {
+            if (condition == null) {
+                throw new RuntimeException("Value for condition cannot be null");
+            }
+            criteria.add(new Criterion(condition));
+        }
+
+        protected void addCriterion(String condition, Object value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            criteria.add(new Criterion(condition, value));
+        }
+
+        protected void addCriterion(String condition, Object value1, Object value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        public Criteria andBusinessIdIsNull() {
+            addCriterion("business_Id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIdIsNotNull() {
+            addCriterion("business_Id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIdEqualTo(Integer value) {
+            addCriterion("business_Id =", value, "businessId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIdNotEqualTo(Integer value) {
+            addCriterion("business_Id <>", value, "businessId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIdGreaterThan(Integer value) {
+            addCriterion("business_Id >", value, "businessId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("business_Id >=", value, "businessId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIdLessThan(Integer value) {
+            addCriterion("business_Id <", value, "businessId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIdLessThanOrEqualTo(Integer value) {
+            addCriterion("business_Id <=", value, "businessId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIdIn(List<Integer> values) {
+            addCriterion("business_Id in", values, "businessId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIdNotIn(List<Integer> values) {
+            addCriterion("business_Id not in", values, "businessId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIdBetween(Integer value1, Integer value2) {
+            addCriterion("business_Id between", value1, value2, "businessId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("business_Id not between", value1, value2, "businessId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessNameIsNull() {
+            addCriterion("business_Name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessNameIsNotNull() {
+            addCriterion("business_Name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessNameEqualTo(String value) {
+            addCriterion("business_Name =", value, "businessName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessNameNotEqualTo(String value) {
+            addCriterion("business_Name <>", value, "businessName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessNameGreaterThan(String value) {
+            addCriterion("business_Name >", value, "businessName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessNameGreaterThanOrEqualTo(String value) {
+            addCriterion("business_Name >=", value, "businessName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessNameLessThan(String value) {
+            addCriterion("business_Name <", value, "businessName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessNameLessThanOrEqualTo(String value) {
+            addCriterion("business_Name <=", value, "businessName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessNameLike(String value) {
+            addCriterion("business_Name like", value, "businessName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessNameNotLike(String value) {
+            addCriterion("business_Name not like", value, "businessName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessNameIn(List<String> values) {
+            addCriterion("business_Name in", values, "businessName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessNameNotIn(List<String> values) {
+            addCriterion("business_Name not in", values, "businessName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessNameBetween(String value1, String value2) {
+            addCriterion("business_Name between", value1, value2, "businessName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessNameNotBetween(String value1, String value2) {
+            addCriterion("business_Name not between", value1, value2, "businessName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIntroIsNull() {
+            addCriterion("business_Intro is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIntroIsNotNull() {
+            addCriterion("business_Intro is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIntroEqualTo(String value) {
+            addCriterion("business_Intro =", value, "businessIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIntroNotEqualTo(String value) {
+            addCriterion("business_Intro <>", value, "businessIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIntroGreaterThan(String value) {
+            addCriterion("business_Intro >", value, "businessIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIntroGreaterThanOrEqualTo(String value) {
+            addCriterion("business_Intro >=", value, "businessIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIntroLessThan(String value) {
+            addCriterion("business_Intro <", value, "businessIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIntroLessThanOrEqualTo(String value) {
+            addCriterion("business_Intro <=", value, "businessIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIntroLike(String value) {
+            addCriterion("business_Intro like", value, "businessIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIntroNotLike(String value) {
+            addCriterion("business_Intro not like", value, "businessIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIntroIn(List<String> values) {
+            addCriterion("business_Intro in", values, "businessIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIntroNotIn(List<String> values) {
+            addCriterion("business_Intro not in", values, "businessIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIntroBetween(String value1, String value2) {
+            addCriterion("business_Intro between", value1, value2, "businessIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessIntroNotBetween(String value1, String value2) {
+            addCriterion("business_Intro not between", value1, value2, "businessIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDescriptionIsNull() {
+            addCriterion("business_Description is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDescriptionIsNotNull() {
+            addCriterion("business_Description is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDescriptionEqualTo(String value) {
+            addCriterion("business_Description =", value, "businessDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDescriptionNotEqualTo(String value) {
+            addCriterion("business_Description <>", value, "businessDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDescriptionGreaterThan(String value) {
+            addCriterion("business_Description >", value, "businessDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDescriptionGreaterThanOrEqualTo(String value) {
+            addCriterion("business_Description >=", value, "businessDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDescriptionLessThan(String value) {
+            addCriterion("business_Description <", value, "businessDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDescriptionLessThanOrEqualTo(String value) {
+            addCriterion("business_Description <=", value, "businessDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDescriptionLike(String value) {
+            addCriterion("business_Description like", value, "businessDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDescriptionNotLike(String value) {
+            addCriterion("business_Description not like", value, "businessDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDescriptionIn(List<String> values) {
+            addCriterion("business_Description in", values, "businessDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDescriptionNotIn(List<String> values) {
+            addCriterion("business_Description not in", values, "businessDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDescriptionBetween(String value1, String value2) {
+            addCriterion("business_Description between", value1, value2, "businessDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDescriptionNotBetween(String value1, String value2) {
+            addCriterion("business_Description not between", value1, value2, "businessDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessMoneyIsNull() {
+            addCriterion("business_Money is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessMoneyIsNotNull() {
+            addCriterion("business_Money is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessMoneyEqualTo(Double value) {
+            addCriterion("business_Money =", value, "businessMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessMoneyNotEqualTo(Double value) {
+            addCriterion("business_Money <>", value, "businessMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessMoneyGreaterThan(Double value) {
+            addCriterion("business_Money >", value, "businessMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessMoneyGreaterThanOrEqualTo(Double value) {
+            addCriterion("business_Money >=", value, "businessMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessMoneyLessThan(Double value) {
+            addCriterion("business_Money <", value, "businessMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessMoneyLessThanOrEqualTo(Double value) {
+            addCriterion("business_Money <=", value, "businessMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessMoneyIn(List<Double> values) {
+            addCriterion("business_Money in", values, "businessMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessMoneyNotIn(List<Double> values) {
+            addCriterion("business_Money not in", values, "businessMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessMoneyBetween(Double value1, Double value2) {
+            addCriterion("business_Money between", value1, value2, "businessMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessMoneyNotBetween(Double value1, Double value2) {
+            addCriterion("business_Money not between", value1, value2, "businessMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeIdIsNull() {
+            addCriterion("business_Type_Id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeIdIsNotNull() {
+            addCriterion("business_Type_Id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeIdEqualTo(Integer value) {
+            addCriterion("business_Type_Id =", value, "businessTypeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeIdNotEqualTo(Integer value) {
+            addCriterion("business_Type_Id <>", value, "businessTypeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeIdGreaterThan(Integer value) {
+            addCriterion("business_Type_Id >", value, "businessTypeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("business_Type_Id >=", value, "businessTypeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeIdLessThan(Integer value) {
+            addCriterion("business_Type_Id <", value, "businessTypeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeIdLessThanOrEqualTo(Integer value) {
+            addCriterion("business_Type_Id <=", value, "businessTypeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeIdIn(List<Integer> values) {
+            addCriterion("business_Type_Id in", values, "businessTypeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeIdNotIn(List<Integer> values) {
+            addCriterion("business_Type_Id not in", values, "businessTypeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeIdBetween(Integer value1, Integer value2) {
+            addCriterion("business_Type_Id between", value1, value2, "businessTypeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("business_Type_Id not between", value1, value2, "businessTypeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeNameIsNull() {
+            addCriterion("business_Type_Name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeNameIsNotNull() {
+            addCriterion("business_Type_Name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeNameEqualTo(String value) {
+            addCriterion("business_Type_Name =", value, "businessTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeNameNotEqualTo(String value) {
+            addCriterion("business_Type_Name <>", value, "businessTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeNameGreaterThan(String value) {
+            addCriterion("business_Type_Name >", value, "businessTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeNameGreaterThanOrEqualTo(String value) {
+            addCriterion("business_Type_Name >=", value, "businessTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeNameLessThan(String value) {
+            addCriterion("business_Type_Name <", value, "businessTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeNameLessThanOrEqualTo(String value) {
+            addCriterion("business_Type_Name <=", value, "businessTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeNameLike(String value) {
+            addCriterion("business_Type_Name like", value, "businessTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeNameNotLike(String value) {
+            addCriterion("business_Type_Name not like", value, "businessTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeNameIn(List<String> values) {
+            addCriterion("business_Type_Name in", values, "businessTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeNameNotIn(List<String> values) {
+            addCriterion("business_Type_Name not in", values, "businessTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeNameBetween(String value1, String value2) {
+            addCriterion("business_Type_Name between", value1, value2, "businessTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessTypeNameNotBetween(String value1, String value2) {
+            addCriterion("business_Type_Name not between", value1, value2, "businessTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgIdIsNull() {
+            addCriterion("business_Img_Id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgIdIsNotNull() {
+            addCriterion("business_Img_Id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgIdEqualTo(Integer value) {
+            addCriterion("business_Img_Id =", value, "businessImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgIdNotEqualTo(Integer value) {
+            addCriterion("business_Img_Id <>", value, "businessImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgIdGreaterThan(Integer value) {
+            addCriterion("business_Img_Id >", value, "businessImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("business_Img_Id >=", value, "businessImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgIdLessThan(Integer value) {
+            addCriterion("business_Img_Id <", value, "businessImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgIdLessThanOrEqualTo(Integer value) {
+            addCriterion("business_Img_Id <=", value, "businessImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgIdIn(List<Integer> values) {
+            addCriterion("business_Img_Id in", values, "businessImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgIdNotIn(List<Integer> values) {
+            addCriterion("business_Img_Id not in", values, "businessImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgIdBetween(Integer value1, Integer value2) {
+            addCriterion("business_Img_Id between", value1, value2, "businessImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("business_Img_Id not between", value1, value2, "businessImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgUrlIsNull() {
+            addCriterion("business_Img_Url is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgUrlIsNotNull() {
+            addCriterion("business_Img_Url is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgUrlEqualTo(String value) {
+            addCriterion("business_Img_Url =", value, "businessImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgUrlNotEqualTo(String value) {
+            addCriterion("business_Img_Url <>", value, "businessImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgUrlGreaterThan(String value) {
+            addCriterion("business_Img_Url >", value, "businessImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgUrlGreaterThanOrEqualTo(String value) {
+            addCriterion("business_Img_Url >=", value, "businessImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgUrlLessThan(String value) {
+            addCriterion("business_Img_Url <", value, "businessImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgUrlLessThanOrEqualTo(String value) {
+            addCriterion("business_Img_Url <=", value, "businessImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgUrlLike(String value) {
+            addCriterion("business_Img_Url like", value, "businessImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgUrlNotLike(String value) {
+            addCriterion("business_Img_Url not like", value, "businessImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgUrlIn(List<String> values) {
+            addCriterion("business_Img_Url in", values, "businessImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgUrlNotIn(List<String> values) {
+            addCriterion("business_Img_Url not in", values, "businessImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgUrlBetween(String value1, String value2) {
+            addCriterion("business_Img_Url between", value1, value2, "businessImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessImgUrlNotBetween(String value1, String value2) {
+            addCriterion("business_Img_Url not between", value1, value2, "businessImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDealamountIsNull() {
+            addCriterion("business_DealAmount is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDealamountIsNotNull() {
+            addCriterion("business_DealAmount is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDealamountEqualTo(Integer value) {
+            addCriterion("business_DealAmount =", value, "businessDealamount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDealamountNotEqualTo(Integer value) {
+            addCriterion("business_DealAmount <>", value, "businessDealamount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDealamountGreaterThan(Integer value) {
+            addCriterion("business_DealAmount >", value, "businessDealamount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDealamountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("business_DealAmount >=", value, "businessDealamount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDealamountLessThan(Integer value) {
+            addCriterion("business_DealAmount <", value, "businessDealamount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDealamountLessThanOrEqualTo(Integer value) {
+            addCriterion("business_DealAmount <=", value, "businessDealamount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDealamountIn(List<Integer> values) {
+            addCriterion("business_DealAmount in", values, "businessDealamount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDealamountNotIn(List<Integer> values) {
+            addCriterion("business_DealAmount not in", values, "businessDealamount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDealamountBetween(Integer value1, Integer value2) {
+            addCriterion("business_DealAmount between", value1, value2, "businessDealamount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusinessDealamountNotBetween(Integer value1, Integer value2) {
+            addCriterion("business_DealAmount not between", value1, value2, "businessDealamount");
+            return (Criteria) this;
+        }
+    }
+
+    public static class Criteria extends GeneratedCriteria {
+
+        protected Criteria() {
+            super();
+        }
+    }
+
+    public static class Criterion {
+        private String condition;
+
+        private Object value;
+
+        private Object secondValue;
+
+        private boolean noValue;
+
+        private boolean singleValue;
+
+        private boolean betweenValue;
+
+        private boolean listValue;
+
+        private String typeHandler;
+
+        public String getCondition() {
+            return condition;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+
+        public Object getSecondValue() {
+            return secondValue;
+        }
+
+        public boolean isNoValue() {
+            return noValue;
+        }
+
+        public boolean isSingleValue() {
+            return singleValue;
+        }
+
+        public boolean isBetweenValue() {
+            return betweenValue;
+        }
+
+        public boolean isListValue() {
+            return listValue;
+        }
+
+        public String getTypeHandler() {
+            return typeHandler;
+        }
+
+        protected Criterion(String condition) {
+            super();
+            this.condition = condition;
+            this.typeHandler = null;
+            this.noValue = true;
+        }
+
+        protected Criterion(String condition, Object value, String typeHandler) {
+            super();
+            this.condition = condition;
+            this.value = value;
+            this.typeHandler = typeHandler;
+            if (value instanceof List<?>) {
+                this.listValue = true;
+            } else {
+                this.singleValue = true;
+            }
+        }
+
+        protected Criterion(String condition, Object value) {
+            this(condition, value, null);
+        }
+
+        protected Criterion(String condition, Object value, Object secondValue, String typeHandler) {
+            super();
+            this.condition = condition;
+            this.value = value;
+            this.secondValue = secondValue;
+            this.typeHandler = typeHandler;
+            this.betweenValue = true;
+        }
+
+        protected Criterion(String condition, Object value, Object secondValue) {
+            this(condition, value, secondValue, null);
+        }
+    }
+}

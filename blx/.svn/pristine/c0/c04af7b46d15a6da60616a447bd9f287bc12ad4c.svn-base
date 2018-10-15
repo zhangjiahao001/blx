@@ -1,0 +1,24 @@
+package com.blx.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.blx.mapper.BusinessMapper;
+import com.blx.pojo.Business;
+import com.blx.pojo.BusinessExample;
+import com.blx.service.businessService;
+@Service
+public class businessServiceImpl implements businessService {
+
+	@Autowired
+	private BusinessMapper businessMapper;
+	
+	@Override
+	public List<Business> getbusinList(BusinessExample example) {
+		List<Business> businList = businessMapper.selectByExample(example);
+		return businList;
+	}
+
+}

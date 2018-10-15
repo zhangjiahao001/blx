@@ -1,0 +1,43 @@
+package com.blx.pojo;
+
+public class Address {
+    private Integer addressId;
+
+    private Integer jPositonId;
+
+    private String addressStreet;
+
+    private String addressDetail;
+
+    public Integer getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
+    }
+
+    public Integer getjPositonId() {
+        return jPositonId;
+    }
+
+    public void setjPositonId(Integer jPositonId) {
+        this.jPositonId = jPositonId;
+    }
+
+    public String getAddressStreet() {
+        return addressStreet;
+    }
+
+    public void setAddressStreet(String addressStreet) {
+        this.addressStreet = addressStreet == null ? null : addressStreet.trim();
+    }
+
+    public String getAddressDetail() {
+        return addressDetail;
+    }
+
+    public void setAddressDetail(String addressDetail) {
+        this.addressDetail = addressDetail == null ? null : addressDetail.trim();
+    }
+}

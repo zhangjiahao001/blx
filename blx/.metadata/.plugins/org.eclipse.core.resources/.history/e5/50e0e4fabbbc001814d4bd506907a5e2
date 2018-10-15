@@ -1,0 +1,4 @@
+jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://192.168.1.135:3366/rongxindb?characterEncoding=utf8
+jdbc.username=root
+jdbc.password=root

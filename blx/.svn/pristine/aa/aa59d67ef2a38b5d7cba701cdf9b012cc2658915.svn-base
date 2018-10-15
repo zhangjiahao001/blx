@@ -1,0 +1,22 @@
+package com.blx.service;
+
+import java.util.List;
+
+import com.blx.pojo.Staff;
+import com.blx.pojo.StaffExample;
+/**
+ * 	员工 逻辑层接口
+ * */
+public interface StaffService {
+	/**
+	 * 	员工登录后台系统方法
+	 * */
+	Staff login(String loginPhone, String loginCode,String loginPassword);
+	
+	
+	/**
+	 * 	查询员工信息根据条件
+	 * */
+	List<Staff> SelectStaffInfoByCondition(StaffExample example);
+	
+}

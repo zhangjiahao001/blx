@@ -1,0 +1,11 @@
+package com.blx.service;
+
+import java.util.List;
+
+import com.blx.pojo.Business;
+import com.blx.pojo.BusinessExample;
+
+public interface BusinessService {
+
+	List<Business> getbusinList(BusinessExample example);
+}

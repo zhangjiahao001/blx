@@ -1,0 +1,30 @@
+package com.blx.mapper;
+
+import com.blx.pojo.JPositionProvice;
+import com.blx.pojo.JPositionProviceExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface JPositionProviceMapper {
+    int countByExample(JPositionProviceExample example);
+
+    int deleteByExample(JPositionProviceExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(JPositionProvice record);
+
+    int insertSelective(JPositionProvice record);
+
+    List<JPositionProvice> selectByExample(JPositionProviceExample example);
+
+    JPositionProvice selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") JPositionProvice record, @Param("example") JPositionProviceExample example);
+
+    int updateByExample(@Param("record") JPositionProvice record, @Param("example") JPositionProviceExample example);
+
+    int updateByPrimaryKeySelective(JPositionProvice record);
+
+    int updateByPrimaryKey(JPositionProvice record);
+}

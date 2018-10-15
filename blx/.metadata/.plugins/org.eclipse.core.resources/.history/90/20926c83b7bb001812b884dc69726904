@@ -1,0 +1,7 @@
+package com.blx.service;
+
+public interface StaffService {
+	
+	Staff login();
+
+}

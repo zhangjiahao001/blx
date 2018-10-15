@@ -1,0 +1,16 @@
+package com.blx.utils;
+
+public class SysContents {
+	/**用户登录成功过后存储在session中的名称*/
+   public static final String USERSESSION="USERSESSION";
+   /**员工登录成功后储存在session中的名称*/
+   public static final String STAFFSESSION="STAFFSESSION";
+   /**跳转到首页的路劲*/
+   public static final String INDEXVIEW="redirect:/skip/index";
+   /**后台首页路径*/
+   public static final String BGINVIEW="redirect:/back/index";
+   /** 最多显示多少条数据*/
+   public final static int pageSize = 10;
+   
+   public  static final String loginYZ="不好意思，这个公司没有这个人，请输出正确的信息！";
+}

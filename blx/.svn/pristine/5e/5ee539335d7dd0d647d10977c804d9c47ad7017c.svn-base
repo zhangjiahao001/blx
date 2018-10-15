@@ -1,0 +1,9 @@
+package com.blx.service;
+
+import com.blx.pojo.Staff;
+
+public interface StaffService {
+	
+	Staff login();
+
+}

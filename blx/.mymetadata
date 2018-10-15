@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="blx"
+  id="myeclipse.1537582743829"
+  context-root="/blx"
+  j2ee-spec="6.0"
+  archive="blx.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

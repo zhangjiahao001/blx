@@ -1,0 +1,102 @@
+package com.blx.service.impl;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.blx.mapper.StaffMapper;
+import com.blx.pojo.Staff;
+import com.blx.pojo.StaffExample;
+import com.blx.pojo.StaffExample.Criteria;
+import com.blx.service.StaffService;
+import com.blx.utils.MD5;
+import com.blx.utils.PageEntity;
+
+/**
+ * 员工 逻辑层实现类
+ * @author Zhangjiahao
+ *
+ */
+@Service
+public class StaffServiceImpl implements StaffService {
+	@Autowired
+	private StaffMapper staffMapper;
+	
+	@Override
+	public Staff login(String loginPhone, String loginCode,String loginPassword) {
+		StaffExample example = new StaffExample();
+		Criteria criteria = example.createCriteria();
+		if (!loginPhone.isEmpty()) {
+			criteria.andStaffCompanyPositionCodeEqualTo(loginCode);
+		}else{
+			criteria.andStaffPhoneEqualTo(loginPhone);
+		}
+		List<Staff> staffList = staffMapper.selectByExample(example);
+		if (staffList!=null&&staffList.size()>0) {
+			Staff staff = staffList.get(0);
+			if (staff.getStaffSystemPassword().equals(MD5.MD5(loginPassword))) {
+				return staff;
+			}
+		}
+		return null;
+	}
+	@Override
+	public boolean InserStaffInfoByStaff(Staff staff) {
+		/*if (staff!=null) {
+			staff.setStaffSystemPassword(MD5.MD5(staff.getStaffSystemPassword()));
+		}*/
+		int isok = staffMapper.insert(staff);
+		if (isok > 0) {
+			return true;
+		}
+		return false;
+	}
+	@Override
+	public boolean DeleteStaffInfoByStaffId(Integer staffId) {
+		int isok = 0;
+		if (staffId!=null&&staffId!=0) {
+			isok = staffMapper.deleteByPrimaryKey(staffId);
+		}
+		if (isok > 0) {
+			return true;
+		}
+		return false;
+	}
+	@Override
+	public boolean UpdateStaffInfoByStaff(Staff staff) {
+		int isok = 0;
+		if (staff!=null) {
+			isok = staffMapper.updateByPrimaryKeySelective(staff);
+		}
+		if (isok > 0) {
+			return true;
+		}
+		return false;
+	}
+	@Override
+	public Staff SelectStaffInfoById(Integer staffId) {
+		Staff staff = null;
+		if (staffId!=null&&staffId!=0) {
+			staff = staffMapper.selectByPrimaryKey(staffId);
+		}
+		return staff;
+	}
+	@Override
+	public List<Staff> SelectStaffInfoByCondition(StaffExample example,
+			PageEntity page) {
+		example.setStart((page.getCurrentIndex()-1)*page.getPageSize());
+		example.setEnd(page.getPageSize());
+		List<Staff> staffList = staffMapper.selectByExample(example);
+		return staffList;
+	}
+	@Override
+	public int SelectStaffTotalCountByCondition(StaffExample example) {
+		int count = staffMapper.countByExample(example);
+		return count;
+	}
+	
+
+}

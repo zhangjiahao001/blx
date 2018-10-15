@@ -1,0 +1,1138 @@
+package com.blx.pojo;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+
+public class StaffExample {
+    protected String orderByClause;
+
+    protected boolean distinct;
+
+    protected List<Criteria> oredCriteria;
+
+    public StaffExample() {
+        oredCriteria = new ArrayList<Criteria>();
+    }
+
+    public void setOrderByClause(String orderByClause) {
+        this.orderByClause = orderByClause;
+    }
+
+    public String getOrderByClause() {
+        return orderByClause;
+    }
+
+    public void setDistinct(boolean distinct) {
+        this.distinct = distinct;
+    }
+
+    public boolean isDistinct() {
+        return distinct;
+    }
+
+    public List<Criteria> getOredCriteria() {
+        return oredCriteria;
+    }
+
+    public void or(Criteria criteria) {
+        oredCriteria.add(criteria);
+    }
+
+    public Criteria or() {
+        Criteria criteria = createCriteriaInternal();
+        oredCriteria.add(criteria);
+        return criteria;
+    }
+
+    public Criteria createCriteria() {
+        Criteria criteria = createCriteriaInternal();
+        if (oredCriteria.size() == 0) {
+            oredCriteria.add(criteria);
+        }
+        return criteria;
+    }
+
+    protected Criteria createCriteriaInternal() {
+        Criteria criteria = new Criteria();
+        return criteria;
+    }
+
+    public void clear() {
+        oredCriteria.clear();
+        orderByClause = null;
+        distinct = false;
+    }
+
+    protected abstract static class GeneratedCriteria {
+        protected List<Criterion> criteria;
+
+        protected GeneratedCriteria() {
+            super();
+            criteria = new ArrayList<Criterion>();
+        }
+
+        public boolean isValid() {
+            return criteria.size() > 0;
+        }
+
+        public List<Criterion> getAllCriteria() {
+            return criteria;
+        }
+
+        public List<Criterion> getCriteria() {
+            return criteria;
+        }
+
+        protected void addCriterion(String condition) {
+            if (condition == null) {
+                throw new RuntimeException("Value for condition cannot be null");
+            }
+            criteria.add(new Criterion(condition));
+        }
+
+        protected void addCriterion(String condition, Object value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            criteria.add(new Criterion(condition, value));
+        }
+
+        protected void addCriterion(String condition, Object value1, Object value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+            if (values == null || values.size() == 0) {
+                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+            }
+            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
+            Iterator<Date> iter = values.iterator();
+            while (iter.hasNext()) {
+                dateList.add(new java.sql.Date(iter.next().getTime()));
+            }
+            addCriterion(condition, dateList, property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
+        }
+
+        public Criteria andStaffIdIsNull() {
+            addCriterion("Staff_Id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffIdIsNotNull() {
+            addCriterion("Staff_Id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffIdEqualTo(Integer value) {
+            addCriterion("Staff_Id =", value, "staffId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffIdNotEqualTo(Integer value) {
+            addCriterion("Staff_Id <>", value, "staffId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffIdGreaterThan(Integer value) {
+            addCriterion("Staff_Id >", value, "staffId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("Staff_Id >=", value, "staffId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffIdLessThan(Integer value) {
+            addCriterion("Staff_Id <", value, "staffId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffIdLessThanOrEqualTo(Integer value) {
+            addCriterion("Staff_Id <=", value, "staffId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffIdIn(List<Integer> values) {
+            addCriterion("Staff_Id in", values, "staffId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffIdNotIn(List<Integer> values) {
+            addCriterion("Staff_Id not in", values, "staffId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffIdBetween(Integer value1, Integer value2) {
+            addCriterion("Staff_Id between", value1, value2, "staffId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("Staff_Id not between", value1, value2, "staffId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffNameIsNull() {
+            addCriterion("Staff_Name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffNameIsNotNull() {
+            addCriterion("Staff_Name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffNameEqualTo(String value) {
+            addCriterion("Staff_Name =", value, "staffName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffNameNotEqualTo(String value) {
+            addCriterion("Staff_Name <>", value, "staffName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffNameGreaterThan(String value) {
+            addCriterion("Staff_Name >", value, "staffName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffNameGreaterThanOrEqualTo(String value) {
+            addCriterion("Staff_Name >=", value, "staffName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffNameLessThan(String value) {
+            addCriterion("Staff_Name <", value, "staffName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffNameLessThanOrEqualTo(String value) {
+            addCriterion("Staff_Name <=", value, "staffName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffNameLike(String value) {
+            addCriterion("Staff_Name like", value, "staffName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffNameNotLike(String value) {
+            addCriterion("Staff_Name not like", value, "staffName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffNameIn(List<String> values) {
+            addCriterion("Staff_Name in", values, "staffName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffNameNotIn(List<String> values) {
+            addCriterion("Staff_Name not in", values, "staffName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffNameBetween(String value1, String value2) {
+            addCriterion("Staff_Name between", value1, value2, "staffName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffNameNotBetween(String value1, String value2) {
+            addCriterion("Staff_Name not between", value1, value2, "staffName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgIdIsNull() {
+            addCriterion("Staff_HeadPortrait_Img_Id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgIdIsNotNull() {
+            addCriterion("Staff_HeadPortrait_Img_Id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgIdEqualTo(Integer value) {
+            addCriterion("Staff_HeadPortrait_Img_Id =", value, "staffHeadportraitImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgIdNotEqualTo(Integer value) {
+            addCriterion("Staff_HeadPortrait_Img_Id <>", value, "staffHeadportraitImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgIdGreaterThan(Integer value) {
+            addCriterion("Staff_HeadPortrait_Img_Id >", value, "staffHeadportraitImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("Staff_HeadPortrait_Img_Id >=", value, "staffHeadportraitImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgIdLessThan(Integer value) {
+            addCriterion("Staff_HeadPortrait_Img_Id <", value, "staffHeadportraitImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgIdLessThanOrEqualTo(Integer value) {
+            addCriterion("Staff_HeadPortrait_Img_Id <=", value, "staffHeadportraitImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgIdIn(List<Integer> values) {
+            addCriterion("Staff_HeadPortrait_Img_Id in", values, "staffHeadportraitImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgIdNotIn(List<Integer> values) {
+            addCriterion("Staff_HeadPortrait_Img_Id not in", values, "staffHeadportraitImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgIdBetween(Integer value1, Integer value2) {
+            addCriterion("Staff_HeadPortrait_Img_Id between", value1, value2, "staffHeadportraitImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("Staff_HeadPortrait_Img_Id not between", value1, value2, "staffHeadportraitImgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgUrlIsNull() {
+            addCriterion("Staff_HeadPortrait_Img_Url is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgUrlIsNotNull() {
+            addCriterion("Staff_HeadPortrait_Img_Url is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgUrlEqualTo(String value) {
+            addCriterion("Staff_HeadPortrait_Img_Url =", value, "staffHeadportraitImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgUrlNotEqualTo(String value) {
+            addCriterion("Staff_HeadPortrait_Img_Url <>", value, "staffHeadportraitImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgUrlGreaterThan(String value) {
+            addCriterion("Staff_HeadPortrait_Img_Url >", value, "staffHeadportraitImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgUrlGreaterThanOrEqualTo(String value) {
+            addCriterion("Staff_HeadPortrait_Img_Url >=", value, "staffHeadportraitImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgUrlLessThan(String value) {
+            addCriterion("Staff_HeadPortrait_Img_Url <", value, "staffHeadportraitImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgUrlLessThanOrEqualTo(String value) {
+            addCriterion("Staff_HeadPortrait_Img_Url <=", value, "staffHeadportraitImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgUrlLike(String value) {
+            addCriterion("Staff_HeadPortrait_Img_Url like", value, "staffHeadportraitImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgUrlNotLike(String value) {
+            addCriterion("Staff_HeadPortrait_Img_Url not like", value, "staffHeadportraitImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgUrlIn(List<String> values) {
+            addCriterion("Staff_HeadPortrait_Img_Url in", values, "staffHeadportraitImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgUrlNotIn(List<String> values) {
+            addCriterion("Staff_HeadPortrait_Img_Url not in", values, "staffHeadportraitImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgUrlBetween(String value1, String value2) {
+            addCriterion("Staff_HeadPortrait_Img_Url between", value1, value2, "staffHeadportraitImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffHeadportraitImgUrlNotBetween(String value1, String value2) {
+            addCriterion("Staff_HeadPortrait_Img_Url not between", value1, value2, "staffHeadportraitImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSexIsNull() {
+            addCriterion("Staff_Sex is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSexIsNotNull() {
+            addCriterion("Staff_Sex is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSexEqualTo(Integer value) {
+            addCriterion("Staff_Sex =", value, "staffSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSexNotEqualTo(Integer value) {
+            addCriterion("Staff_Sex <>", value, "staffSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSexGreaterThan(Integer value) {
+            addCriterion("Staff_Sex >", value, "staffSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSexGreaterThanOrEqualTo(Integer value) {
+            addCriterion("Staff_Sex >=", value, "staffSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSexLessThan(Integer value) {
+            addCriterion("Staff_Sex <", value, "staffSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSexLessThanOrEqualTo(Integer value) {
+            addCriterion("Staff_Sex <=", value, "staffSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSexIn(List<Integer> values) {
+            addCriterion("Staff_Sex in", values, "staffSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSexNotIn(List<Integer> values) {
+            addCriterion("Staff_Sex not in", values, "staffSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSexBetween(Integer value1, Integer value2) {
+            addCriterion("Staff_Sex between", value1, value2, "staffSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSexNotBetween(Integer value1, Integer value2) {
+            addCriterion("Staff_Sex not between", value1, value2, "staffSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffBrithdayIsNull() {
+            addCriterion("Staff_Brithday is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffBrithdayIsNotNull() {
+            addCriterion("Staff_Brithday is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffBrithdayEqualTo(Date value) {
+            addCriterionForJDBCDate("Staff_Brithday =", value, "staffBrithday");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffBrithdayNotEqualTo(Date value) {
+            addCriterionForJDBCDate("Staff_Brithday <>", value, "staffBrithday");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffBrithdayGreaterThan(Date value) {
+            addCriterionForJDBCDate("Staff_Brithday >", value, "staffBrithday");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffBrithdayGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("Staff_Brithday >=", value, "staffBrithday");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffBrithdayLessThan(Date value) {
+            addCriterionForJDBCDate("Staff_Brithday <", value, "staffBrithday");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffBrithdayLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("Staff_Brithday <=", value, "staffBrithday");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffBrithdayIn(List<Date> values) {
+            addCriterionForJDBCDate("Staff_Brithday in", values, "staffBrithday");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffBrithdayNotIn(List<Date> values) {
+            addCriterionForJDBCDate("Staff_Brithday not in", values, "staffBrithday");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffBrithdayBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("Staff_Brithday between", value1, value2, "staffBrithday");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffBrithdayNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("Staff_Brithday not between", value1, value2, "staffBrithday");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffPhoneIsNull() {
+            addCriterion("Staff_Phone is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffPhoneIsNotNull() {
+            addCriterion("Staff_Phone is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffPhoneEqualTo(String value) {
+            addCriterion("Staff_Phone =", value, "staffPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffPhoneNotEqualTo(String value) {
+            addCriterion("Staff_Phone <>", value, "staffPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffPhoneGreaterThan(String value) {
+            addCriterion("Staff_Phone >", value, "staffPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffPhoneGreaterThanOrEqualTo(String value) {
+            addCriterion("Staff_Phone >=", value, "staffPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffPhoneLessThan(String value) {
+            addCriterion("Staff_Phone <", value, "staffPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffPhoneLessThanOrEqualTo(String value) {
+            addCriterion("Staff_Phone <=", value, "staffPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffPhoneLike(String value) {
+            addCriterion("Staff_Phone like", value, "staffPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffPhoneNotLike(String value) {
+            addCriterion("Staff_Phone not like", value, "staffPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffPhoneIn(List<String> values) {
+            addCriterion("Staff_Phone in", values, "staffPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffPhoneNotIn(List<String> values) {
+            addCriterion("Staff_Phone not in", values, "staffPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffPhoneBetween(String value1, String value2) {
+            addCriterion("Staff_Phone between", value1, value2, "staffPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffPhoneNotBetween(String value1, String value2) {
+            addCriterion("Staff_Phone not between", value1, value2, "staffPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffAddressIdIsNull() {
+            addCriterion("Staff_Address_Id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffAddressIdIsNotNull() {
+            addCriterion("Staff_Address_Id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffAddressIdEqualTo(Integer value) {
+            addCriterion("Staff_Address_Id =", value, "staffAddressId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffAddressIdNotEqualTo(Integer value) {
+            addCriterion("Staff_Address_Id <>", value, "staffAddressId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffAddressIdGreaterThan(Integer value) {
+            addCriterion("Staff_Address_Id >", value, "staffAddressId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffAddressIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("Staff_Address_Id >=", value, "staffAddressId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffAddressIdLessThan(Integer value) {
+            addCriterion("Staff_Address_Id <", value, "staffAddressId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffAddressIdLessThanOrEqualTo(Integer value) {
+            addCriterion("Staff_Address_Id <=", value, "staffAddressId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffAddressIdIn(List<Integer> values) {
+            addCriterion("Staff_Address_Id in", values, "staffAddressId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffAddressIdNotIn(List<Integer> values) {
+            addCriterion("Staff_Address_Id not in", values, "staffAddressId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffAddressIdBetween(Integer value1, Integer value2) {
+            addCriterion("Staff_Address_Id between", value1, value2, "staffAddressId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffAddressIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("Staff_Address_Id not between", value1, value2, "staffAddressId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionIdIsNull() {
+            addCriterion("Staff_Company_Position_Id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionIdIsNotNull() {
+            addCriterion("Staff_Company_Position_Id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionIdEqualTo(Integer value) {
+            addCriterion("Staff_Company_Position_Id =", value, "staffCompanyPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionIdNotEqualTo(Integer value) {
+            addCriterion("Staff_Company_Position_Id <>", value, "staffCompanyPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionIdGreaterThan(Integer value) {
+            addCriterion("Staff_Company_Position_Id >", value, "staffCompanyPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("Staff_Company_Position_Id >=", value, "staffCompanyPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionIdLessThan(Integer value) {
+            addCriterion("Staff_Company_Position_Id <", value, "staffCompanyPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionIdLessThanOrEqualTo(Integer value) {
+            addCriterion("Staff_Company_Position_Id <=", value, "staffCompanyPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionIdIn(List<Integer> values) {
+            addCriterion("Staff_Company_Position_Id in", values, "staffCompanyPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionIdNotIn(List<Integer> values) {
+            addCriterion("Staff_Company_Position_Id not in", values, "staffCompanyPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionIdBetween(Integer value1, Integer value2) {
+            addCriterion("Staff_Company_Position_Id between", value1, value2, "staffCompanyPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("Staff_Company_Position_Id not between", value1, value2, "staffCompanyPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionCodeIsNull() {
+            addCriterion("Staff_Company_Position_Code is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionCodeIsNotNull() {
+            addCriterion("Staff_Company_Position_Code is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionCodeEqualTo(String value) {
+            addCriterion("Staff_Company_Position_Code =", value, "staffCompanyPositionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionCodeNotEqualTo(String value) {
+            addCriterion("Staff_Company_Position_Code <>", value, "staffCompanyPositionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionCodeGreaterThan(String value) {
+            addCriterion("Staff_Company_Position_Code >", value, "staffCompanyPositionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("Staff_Company_Position_Code >=", value, "staffCompanyPositionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionCodeLessThan(String value) {
+            addCriterion("Staff_Company_Position_Code <", value, "staffCompanyPositionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionCodeLessThanOrEqualTo(String value) {
+            addCriterion("Staff_Company_Position_Code <=", value, "staffCompanyPositionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionCodeLike(String value) {
+            addCriterion("Staff_Company_Position_Code like", value, "staffCompanyPositionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionCodeNotLike(String value) {
+            addCriterion("Staff_Company_Position_Code not like", value, "staffCompanyPositionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionCodeIn(List<String> values) {
+            addCriterion("Staff_Company_Position_Code in", values, "staffCompanyPositionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionCodeNotIn(List<String> values) {
+            addCriterion("Staff_Company_Position_Code not in", values, "staffCompanyPositionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionCodeBetween(String value1, String value2) {
+            addCriterion("Staff_Company_Position_Code between", value1, value2, "staffCompanyPositionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionCodeNotBetween(String value1, String value2) {
+            addCriterion("Staff_Company_Position_Code not between", value1, value2, "staffCompanyPositionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionNameIsNull() {
+            addCriterion("Staff_Company_Position_Name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionNameIsNotNull() {
+            addCriterion("Staff_Company_Position_Name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionNameEqualTo(String value) {
+            addCriterion("Staff_Company_Position_Name =", value, "staffCompanyPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionNameNotEqualTo(String value) {
+            addCriterion("Staff_Company_Position_Name <>", value, "staffCompanyPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionNameGreaterThan(String value) {
+            addCriterion("Staff_Company_Position_Name >", value, "staffCompanyPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionNameGreaterThanOrEqualTo(String value) {
+            addCriterion("Staff_Company_Position_Name >=", value, "staffCompanyPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionNameLessThan(String value) {
+            addCriterion("Staff_Company_Position_Name <", value, "staffCompanyPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionNameLessThanOrEqualTo(String value) {
+            addCriterion("Staff_Company_Position_Name <=", value, "staffCompanyPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionNameLike(String value) {
+            addCriterion("Staff_Company_Position_Name like", value, "staffCompanyPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionNameNotLike(String value) {
+            addCriterion("Staff_Company_Position_Name not like", value, "staffCompanyPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionNameIn(List<String> values) {
+            addCriterion("Staff_Company_Position_Name in", values, "staffCompanyPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionNameNotIn(List<String> values) {
+            addCriterion("Staff_Company_Position_Name not in", values, "staffCompanyPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionNameBetween(String value1, String value2) {
+            addCriterion("Staff_Company_Position_Name between", value1, value2, "staffCompanyPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffCompanyPositionNameNotBetween(String value1, String value2) {
+            addCriterion("Staff_Company_Position_Name not between", value1, value2, "staffCompanyPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionIdIsNull() {
+            addCriterion("Staff_System_Position_Id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionIdIsNotNull() {
+            addCriterion("Staff_System_Position_Id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionIdEqualTo(Integer value) {
+            addCriterion("Staff_System_Position_Id =", value, "staffSystemPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionIdNotEqualTo(Integer value) {
+            addCriterion("Staff_System_Position_Id <>", value, "staffSystemPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionIdGreaterThan(Integer value) {
+            addCriterion("Staff_System_Position_Id >", value, "staffSystemPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("Staff_System_Position_Id >=", value, "staffSystemPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionIdLessThan(Integer value) {
+            addCriterion("Staff_System_Position_Id <", value, "staffSystemPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionIdLessThanOrEqualTo(Integer value) {
+            addCriterion("Staff_System_Position_Id <=", value, "staffSystemPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionIdIn(List<Integer> values) {
+            addCriterion("Staff_System_Position_Id in", values, "staffSystemPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionIdNotIn(List<Integer> values) {
+            addCriterion("Staff_System_Position_Id not in", values, "staffSystemPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionIdBetween(Integer value1, Integer value2) {
+            addCriterion("Staff_System_Position_Id between", value1, value2, "staffSystemPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("Staff_System_Position_Id not between", value1, value2, "staffSystemPositionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionNameIsNull() {
+            addCriterion("Staff_System_Position_Name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionNameIsNotNull() {
+            addCriterion("Staff_System_Position_Name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionNameEqualTo(String value) {
+            addCriterion("Staff_System_Position_Name =", value, "staffSystemPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionNameNotEqualTo(String value) {
+            addCriterion("Staff_System_Position_Name <>", value, "staffSystemPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionNameGreaterThan(String value) {
+            addCriterion("Staff_System_Position_Name >", value, "staffSystemPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionNameGreaterThanOrEqualTo(String value) {
+            addCriterion("Staff_System_Position_Name >=", value, "staffSystemPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionNameLessThan(String value) {
+            addCriterion("Staff_System_Position_Name <", value, "staffSystemPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionNameLessThanOrEqualTo(String value) {
+            addCriterion("Staff_System_Position_Name <=", value, "staffSystemPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionNameLike(String value) {
+            addCriterion("Staff_System_Position_Name like", value, "staffSystemPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionNameNotLike(String value) {
+            addCriterion("Staff_System_Position_Name not like", value, "staffSystemPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionNameIn(List<String> values) {
+            addCriterion("Staff_System_Position_Name in", values, "staffSystemPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionNameNotIn(List<String> values) {
+            addCriterion("Staff_System_Position_Name not in", values, "staffSystemPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionNameBetween(String value1, String value2) {
+            addCriterion("Staff_System_Position_Name between", value1, value2, "staffSystemPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPositionNameNotBetween(String value1, String value2) {
+            addCriterion("Staff_System_Position_Name not between", value1, value2, "staffSystemPositionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPasswordIsNull() {
+            addCriterion("Staff_System_Password is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPasswordIsNotNull() {
+            addCriterion("Staff_System_Password is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPasswordEqualTo(String value) {
+            addCriterion("Staff_System_Password =", value, "staffSystemPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPasswordNotEqualTo(String value) {
+            addCriterion("Staff_System_Password <>", value, "staffSystemPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPasswordGreaterThan(String value) {
+            addCriterion("Staff_System_Password >", value, "staffSystemPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPasswordGreaterThanOrEqualTo(String value) {
+            addCriterion("Staff_System_Password >=", value, "staffSystemPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPasswordLessThan(String value) {
+            addCriterion("Staff_System_Password <", value, "staffSystemPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPasswordLessThanOrEqualTo(String value) {
+            addCriterion("Staff_System_Password <=", value, "staffSystemPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPasswordLike(String value) {
+            addCriterion("Staff_System_Password like", value, "staffSystemPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPasswordNotLike(String value) {
+            addCriterion("Staff_System_Password not like", value, "staffSystemPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPasswordIn(List<String> values) {
+            addCriterion("Staff_System_Password in", values, "staffSystemPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPasswordNotIn(List<String> values) {
+            addCriterion("Staff_System_Password not in", values, "staffSystemPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPasswordBetween(String value1, String value2) {
+            addCriterion("Staff_System_Password between", value1, value2, "staffSystemPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffSystemPasswordNotBetween(String value1, String value2) {
+            addCriterion("Staff_System_Password not between", value1, value2, "staffSystemPassword");
+            return (Criteria) this;
+        }
+    }
+
+    public static class Criteria extends GeneratedCriteria {
+
+        protected Criteria() {
+            super();
+        }
+    }
+
+    public static class Criterion {
+        private String condition;
+
+        private Object value;
+
+        private Object secondValue;
+
+        private boolean noValue;
+
+        private boolean singleValue;
+
+        private boolean betweenValue;
+
+        private boolean listValue;
+
+        private String typeHandler;
+
+        public String getCondition() {
+            return condition;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+
+        public Object getSecondValue() {
+            return secondValue;
+        }
+
+        public boolean isNoValue() {
+            return noValue;
+        }
+
+        public boolean isSingleValue() {
+            return singleValue;
+        }
+
+        public boolean isBetweenValue() {
+            return betweenValue;
+        }
+
+        public boolean isListValue() {
+            return listValue;
+        }
+
+        public String getTypeHandler() {
+            return typeHandler;
+        }
+
+        protected Criterion(String condition) {
+            super();
+            this.condition = condition;
+            this.typeHandler = null;
+            this.noValue = true;
+        }
+
+        protected Criterion(String condition, Object value, String typeHandler) {
+            super();
+            this.condition = condition;
+            this.value = value;
+            this.typeHandler = typeHandler;
+            if (value instanceof List<?>) {
+                this.listValue = true;
+            } else {
+                this.singleValue = true;
+            }
+        }
+
+        protected Criterion(String condition, Object value) {
+            this(condition, value, null);
+        }
+
+        protected Criterion(String condition, Object value, Object secondValue, String typeHandler) {
+            super();
+            this.condition = condition;
+            this.value = value;
+            this.secondValue = secondValue;
+            this.typeHandler = typeHandler;
+            this.betweenValue = true;
+        }
+
+        protected Criterion(String condition, Object value, Object secondValue) {
+            this(condition, value, secondValue, null);
+        }
+    }
+}

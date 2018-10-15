@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blx.mapper.BusinessMapper" >
+  <resultMap id="BaseResultMap" type="com.blx.pojo.Business" >
+    <id column="business_Id" property="businessId" jdbcType="INTEGER" />
+    <result column="business_Intro" property="businessIntro" jdbcType="VARCHAR" />
+    <result column="business_Description" property="businessDescription" jdbcType="VARCHAR" />
+    <result column="business_Money" property="businessMoney" jdbcType="DOUBLE" />
+    <result column="business_Type_Id" property="businessTypeId" jdbcType="INTEGER" />
+    <result column="business_Type_Name" property="businessTypeName" jdbcType="VARCHAR" />
+    <result column="business_Img_Id" property="businessImgId" jdbcType="INTEGER" />
+    <result column="business_Img_Url" property="businessImgUrl" jdbcType="VARCHAR" />
+    <result column="business_DealAmount" property="businessDealamount" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.blx.pojo.Business" extends="BaseResultMap" >
+    <result column="business_Name" property="businessName" jdbcType="VARBINARY" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    business_Id, business_Intro, business_Description, business_Money, business_Type_Id, 
+    business_Type_Name, business_Img_Id, business_Img_Url, business_DealAmount
+  </sql>
+  <sql id="Blob_Column_List" >
+    business_Name
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.blx.pojo.BusinessExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from business
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.blx.pojo.BusinessExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from business
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from business
+    where business_Id = #{businessId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from business
+    where business_Id = #{businessId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.blx.pojo.BusinessExample" >
+    delete from business
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.blx.pojo.Business" >
+    insert into business (business_Id, business_Intro, business_Description, 
+      business_Money, business_Type_Id, business_Type_Name, 
+      business_Img_Id, business_Img_Url, business_DealAmount, 
+      business_Name)
+    values (#{businessId,jdbcType=INTEGER}, #{businessIntro,jdbcType=VARCHAR}, #{businessDescription,jdbcType=VARCHAR}, 
+      #{businessMoney,jdbcType=DOUBLE}, #{businessTypeId,jdbcType=INTEGER}, #{businessTypeName,jdbcType=VARCHAR}, 
+      #{businessImgId,jdbcType=INTEGER}, #{businessImgUrl,jdbcType=VARCHAR}, #{businessDealamount,jdbcType=INTEGER}, 
+      #{businessName,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.blx.pojo.Business" >
+    insert into business
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="businessId != null" >
+        business_Id,
+      </if>
+      <if test="businessIntro != null" >
+        business_Intro,
+      </if>
+      <if test="businessDescription != null" >
+        business_Description,
+      </if>
+      <if test="businessMoney != null" >
+        business_Money,
+      </if>
+      <if test="businessTypeId != null" >
+        business_Type_Id,
+      </if>
+      <if test="businessTypeName != null" >
+        business_Type_Name,
+      </if>
+      <if test="businessImgId != null" >
+        business_Img_Id,
+      </if>
+      <if test="businessImgUrl != null" >
+        business_Img_Url,
+      </if>
+      <if test="businessDealamount != null" >
+        business_DealAmount,
+      </if>
+      <if test="businessName != null" >
+        business_Name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="businessId != null" >
+        #{businessId,jdbcType=INTEGER},
+      </if>
+      <if test="businessIntro != null" >
+        #{businessIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="businessDescription != null" >
+        #{businessDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="businessMoney != null" >
+        #{businessMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="businessTypeId != null" >
+        #{businessTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="businessTypeName != null" >
+        #{businessTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessImgId != null" >
+        #{businessImgId,jdbcType=INTEGER},
+      </if>
+      <if test="businessImgUrl != null" >
+        #{businessImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="businessDealamount != null" >
+        #{businessDealamount,jdbcType=INTEGER},
+      </if>
+      <if test="businessName != null" >
+        #{businessName,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.blx.pojo.BusinessExample" resultType="java.lang.Integer" >
+    select count(*) from business
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update business
+    <set >
+      <if test="record.businessId != null" >
+        business_Id = #{record.businessId,jdbcType=INTEGER},
+      </if>
+      <if test="record.businessIntro != null" >
+        business_Intro = #{record.businessIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessDescription != null" >
+        business_Description = #{record.businessDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessMoney != null" >
+        business_Money = #{record.businessMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.businessTypeId != null" >
+        business_Type_Id = #{record.businessTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.businessTypeName != null" >
+        business_Type_Name = #{record.businessTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessImgId != null" >
+        business_Img_Id = #{record.businessImgId,jdbcType=INTEGER},
+      </if>
+      <if test="record.businessImgUrl != null" >
+        business_Img_Url = #{record.businessImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessDealamount != null" >
+        business_DealAmount = #{record.businessDealamount,jdbcType=INTEGER},
+      </if>
+      <if test="record.businessName != null" >
+        business_Name = #{record.businessName,jdbcType=VARBINARY},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update business
+    set business_Id = #{record.businessId,jdbcType=INTEGER},
+      business_Intro = #{record.businessIntro,jdbcType=VARCHAR},
+      business_Description = #{record.businessDescription,jdbcType=VARCHAR},
+      business_Money = #{record.businessMoney,jdbcType=DOUBLE},
+      business_Type_Id = #{record.businessTypeId,jdbcType=INTEGER},
+      business_Type_Name = #{record.businessTypeName,jdbcType=VARCHAR},
+      business_Img_Id = #{record.businessImgId,jdbcType=INTEGER},
+      business_Img_Url = #{record.businessImgUrl,jdbcType=VARCHAR},
+      business_DealAmount = #{record.businessDealamount,jdbcType=INTEGER},
+      business_Name = #{record.businessName,jdbcType=VARBINARY}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update business
+    set business_Id = #{record.businessId,jdbcType=INTEGER},
+      business_Intro = #{record.businessIntro,jdbcType=VARCHAR},
+      business_Description = #{record.businessDescription,jdbcType=VARCHAR},
+      business_Money = #{record.businessMoney,jdbcType=DOUBLE},
+      business_Type_Id = #{record.businessTypeId,jdbcType=INTEGER},
+      business_Type_Name = #{record.businessTypeName,jdbcType=VARCHAR},
+      business_Img_Id = #{record.businessImgId,jdbcType=INTEGER},
+      business_Img_Url = #{record.businessImgUrl,jdbcType=VARCHAR},
+      business_DealAmount = #{record.businessDealamount,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.blx.pojo.Business" >
+    update business
+    <set >
+      <if test="businessIntro != null" >
+        business_Intro = #{businessIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="businessDescription != null" >
+        business_Description = #{businessDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="businessMoney != null" >
+        business_Money = #{businessMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="businessTypeId != null" >
+        business_Type_Id = #{businessTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="businessTypeName != null" >
+        business_Type_Name = #{businessTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessImgId != null" >
+        business_Img_Id = #{businessImgId,jdbcType=INTEGER},
+      </if>
+      <if test="businessImgUrl != null" >
+        business_Img_Url = #{businessImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="businessDealamount != null" >
+        business_DealAmount = #{businessDealamount,jdbcType=INTEGER},
+      </if>
+      <if test="businessName != null" >
+        business_Name = #{businessName,jdbcType=VARBINARY},
+      </if>
+    </set>
+    where business_Id = #{businessId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.blx.pojo.Business" >
+    update business
+    set business_Intro = #{businessIntro,jdbcType=VARCHAR},
+      business_Description = #{businessDescription,jdbcType=VARCHAR},
+      business_Money = #{businessMoney,jdbcType=DOUBLE},
+      business_Type_Id = #{businessTypeId,jdbcType=INTEGER},
+      business_Type_Name = #{businessTypeName,jdbcType=VARCHAR},
+      business_Img_Id = #{businessImgId,jdbcType=INTEGER},
+      business_Img_Url = #{businessImgUrl,jdbcType=VARCHAR},
+      business_DealAmount = #{businessDealamount,jdbcType=INTEGER},
+      business_Name = #{businessName,jdbcType=VARBINARY}
+    where business_Id = #{businessId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.blx.pojo.Business" >
+    update business
+    set business_Intro = #{businessIntro,jdbcType=VARCHAR},
+      business_Description = #{businessDescription,jdbcType=VARCHAR},
+      business_Money = #{businessMoney,jdbcType=DOUBLE},
+      business_Type_Id = #{businessTypeId,jdbcType=INTEGER},
+      business_Type_Name = #{businessTypeName,jdbcType=VARCHAR},
+      business_Img_Id = #{businessImgId,jdbcType=INTEGER},
+      business_Img_Url = #{businessImgUrl,jdbcType=VARCHAR},
+      business_DealAmount = #{businessDealamount,jdbcType=INTEGER}
+    where business_Id = #{businessId,jdbcType=INTEGER}
+  </update>
+</mapper>

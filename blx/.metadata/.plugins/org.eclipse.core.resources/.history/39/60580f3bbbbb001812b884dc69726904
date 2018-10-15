@@ -1,0 +1,30 @@
+package com.blx.mapper;
+
+import com.blx.pojo.JPositionCounty;
+import com.blx.pojo.JPositionCountyExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface JPositionCountyMapper {
+    int countByExample(JPositionCountyExample example);
+
+    int deleteByExample(JPositionCountyExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(JPositionCounty record);
+
+    int insertSelective(JPositionCounty record);
+
+    List<JPositionCounty> selectByExample(JPositionCountyExample example);
+
+    JPositionCounty selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") JPositionCounty record, @Param("example") JPositionCountyExample example);
+
+    int updateByExample(@Param("record") JPositionCounty record, @Param("example") JPositionCountyExample example);
+
+    int updateByPrimaryKeySelective(JPositionCounty record);
+
+    int updateByPrimaryKey(JPositionCounty record);
+}

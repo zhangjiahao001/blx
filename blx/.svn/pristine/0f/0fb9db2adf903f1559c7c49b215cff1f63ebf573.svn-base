@@ -1,0 +1,42 @@
+package com.blx.service;
+
+import java.util.List;
+
+import com.blx.pojo.Address;
+import com.blx.pojo.AddressExample;
+/**
+ * 地址类 逻辑层接口
+ * @author Administrator
+ *
+ */
+public interface AddressService {
+	/**
+	 * 动态新增地址
+	 * @param address
+	 * @return
+	 */
+	boolean InsertAddressByAddress(Address address);
+	
+	/**
+	 * 根据地址Id删除地址
+	 * @param addressId
+	 * @return
+	 */
+	boolean DeleteAddtessByAddressId(Integer addressId);
+	
+	/**
+	 * 根据Id动态修改地址
+	 * @param address
+	 * @return
+	 */
+	boolean UpdateAddressByAddress(Address address);
+	
+	/**
+	 * 根据example查询地址
+	 * @param example
+	 * @return List集合
+	 */
+	List<Address> SelectAddressByCondition(AddressExample example);
+	
+	Address SelectAddressByAddressId()
+}

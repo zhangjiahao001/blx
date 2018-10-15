@@ -1,0 +1,176 @@
+package com.blx.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import com.alibaba.fastjson.JSON;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.blx.pojo.Staff;
+import com.blx.pojo.StaffExample;
+import com.blx.pojo.StaffExample.Criteria;
+import com.blx.service.StaffService;
+import com.blx.utils.MD5;
+import com.blx.utils.SysContents;
+/**
+ * 员工 控制层
+ * @author Zhangjiahao
+ *
+ */
+@Controller
+@RequestMapping("/staff")
+public class StaffController {
+
+	@Autowired
+	private StaffService staffService;
+	
+	/**
+	 * 员工登录后台系统方法
+	 * @param mvView 视图和数据
+	 * @param loginPhone 电话
+	 * @param loginCode	工号
+	 * @param password 密码
+	 * @return 视图和数据
+	 */
+	@RequestMapping(value="/login.html")
+	public ModelAndView login(ModelAndView mvView,String loginPhone,String loginCode,String password,HttpSession session){
+		Staff staff = staffService.login(loginPhone, loginCode,password);
+		if(staff!=null){
+			mvView.addObject("staff", staff);
+			session.setAttribute("staff", staff);
+			mvView.addObject("msg", "欢迎进入玻璃心！");
+			mvView.setViewName("redirect:/back/index.html");
+		}else{
+			mvView.addObject("msg", "电话、工号或密码输入错误！");
+			mvView.setViewName("redirect:/back/loginView.html");
+		}
+		return mvView;
+	}
+	/**
+	 * 跳转添加员工页面
+	 * @return
+	 */
+	@RequestMapping(value="/insertView.html")
+	public String insertView(){
+		return "BackGround/addStaff";
+	}
+	
+	/**
+	 * 添加员工方法
+	 * @param mvView 视图和数据
+	 * @param staff	员工类
+	 * @return	视图和数据
+	 */
+	@RequestMapping(value="/insert.html")
+	public ModelAndView insertStaffInfo(ModelAndView mvView,Staff staff){
+		if (staff!=null) {
+			boolean isok = staffService.InserStaffInfoByStaff(staff);
+			if (isok) {
+				mvView.setViewName("BackGround/staffList");
+			}else{
+				mvView.addObject("msg", "添加失败了！");
+				mvView.setViewName("BackGround/addStaff");
+			}
+		}else{
+			mvView.addObject("msg", "员工信息为空！！！");
+			mvView.setViewName("BackGround/addStaff");
+		}
+		return mvView;
+	}
+	
+	/**
+	 * 删除员工方法
+	 * @param mvView
+	 * @param staffId 员工Id
+	 * @return
+	 */
+	@RequestMapping(value="/delete/{staffId}.html")
+	@ResponseBody
+	public String deleteStaffInfoById(RedirectAttributes ra,Integer staffId){
+		boolean isok = staffService.DeleteStaffInfoByStaffId(staffId);
+		if (isok) {
+			ra.addAttribute("msg", "成功删除！Id为"+staffId+"的员工！");
+		}else{
+			ra.addAttribute("msg", "删除失败了！");
+		}
+	}
+	//登录
+	@RequestMapping(value="/login.html")
+	public String login(String loginPhone,String loginCode){
+		Staff staff = staffService.login(loginPhone, loginCode);
+		if(staff==null){
+			System.out.println(SysContents.loginYZ);
+			return "redirect:/staff/loginView.html";
+		}
+	}
+	//登录
+	@RequestMapping(value="/login.html")
+	public String UpdateStaffInfo(Integer staffId){
+		boolean isok = staffService.DeleteStaffInfoByStaffId(staffId);
+		
+		String json = JSON.toJSONString(isok);
+		return json;
+	}
+	
+	/**
+	 * 跳转修改页面方法
+	 * 根据Id获得Staff返回到修改页面
+	 * @param mvView
+	 * @param staffId
+	 * @return
+	 */
+	@RequestMapping(value="/updateView/{staffId}.html")
+	public ModelAndView updateView(ModelAndView mvView,Integer staffId){
+		Staff staff = staffService.SelectStaffInfoById(staffId);
+		mvView.addObject("staff", staff);
+		mvView.setViewName("BackGround/updStaff");
+		return mvView;
+	}
+	
+	/**
+	 * 查询员工列表根据工号、名称、电话查询
+	 * @param mvView
+	 * @param staffCompanyPositionCode
+	 * @param staffName
+	 * @param staffPhone
+	 * @return
+	 */
+	@RequestMapping(value="/staffList.html")
+	public ModelAndView staffList(ModelAndView mvView,String staffCompanyPositionCode,String staffName,String staffPhone){
+		StaffExample example = new StaffExample();
+		Criteria criteria = example.createCriteria();
+		if (!staffCompanyPositionCode.isEmpty()) {
+			criteria.andStaffCompanyPositionCodeEqualTo(staffCompanyPositionCode);
+		}else if(!staffName.isEmpty()){
+			criteria.andStaffNameLike(staffName);
+		}else if(!staffPhone.isEmpty()){
+			criteria.andStaffPhoneEqualTo(staffPhone);
+		}
+		List<Staff> staffList = staffService.SelectStaffInfoByCondition(example);
+		
+		mvView.addObject("staffList", staffList);
+		mvView.setViewName("BackGround/staffList");
+		return mvView;
+	}
+	
+	/**
+	 * 查询个人信息页面
+	 * @param mvView
+	 * @param staffId
+	 * @return
+	 */
+	@RequestMapping(value="/staffShow/{staffId).html")
+	public ModelAndView staffShow(ModelAndView mvView,Integer staffId){
+		Staff staff = staffService.SelectStaffInfoById(staffId);
+		mvView.addObject("staff", staff);
+		mvView.setViewName("BackGround/staffShow");
+		return mvView;
+	}
+	
+}

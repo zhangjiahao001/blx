@@ -1,0 +1,6 @@
+package com.blx.service;
+
+public interface AddressService {
+	
+	boolean InserAddressByAddress(Address address);
+}

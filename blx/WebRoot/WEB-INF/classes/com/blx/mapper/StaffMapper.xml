@@ -1,0 +1,376 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blx.mapper.StaffMapper" >
+  <resultMap id="BaseResultMap" type="com.blx.pojo.Staff" >
+    <id column="Staff_Id" property="staffId" jdbcType="INTEGER" />
+    <result column="Staff_Name" property="staffName" jdbcType="VARCHAR" />
+    <result column="Staff_HeadPortrait_Img_Id" property="staffHeadportraitImgId" jdbcType="INTEGER" />
+    <result column="Staff_HeadPortrait_Img_Url" property="staffHeadportraitImgUrl" jdbcType="VARCHAR" />
+    <result column="Staff_Sex" property="staffSex" jdbcType="INTEGER" />
+    <result column="Staff_Brithday" property="staffBrithday" jdbcType="DATE" />
+    <result column="Staff_Phone" property="staffPhone" jdbcType="VARCHAR" />
+    <result column="Staff_Address_Id" property="staffAddressId" jdbcType="INTEGER" />
+    <result column="Staff_Company_Position_Id" property="staffCompanyPositionId" jdbcType="INTEGER" />
+    <result column="Staff_Company_Position_Code" property="staffCompanyPositionCode" jdbcType="VARCHAR" />
+    <result column="Staff_Company_Position_Name" property="staffCompanyPositionName" jdbcType="VARCHAR" />
+    <result column="Staff_System_Position_Id" property="staffSystemPositionId" jdbcType="INTEGER" />
+    <result column="Staff_System_Position_Name" property="staffSystemPositionName" jdbcType="VARCHAR" />
+    <result column="Staff_System_Password" property="staffSystemPassword" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Staff_Id, Staff_Name, Staff_HeadPortrait_Img_Id, Staff_HeadPortrait_Img_Url, Staff_Sex, 
+    Staff_Brithday, Staff_Phone, Staff_Address_Id, Staff_Company_Position_Id, Staff_Company_Position_Code, 
+    Staff_Company_Position_Name, Staff_System_Position_Id, Staff_System_Position_Name, 
+    Staff_System_Password
+  </sql>
+  
+  <!-- 分页查询 -->
+  <!-- 总数据查询查询 -->
+  <select id="getTotalCount" resultType="int" parameterType="map">
+  	select count(Staff_Id) from staff
+  	<trim prefix="where" prefixOverrides="AND |OR">
+  		<if test="staffName!=null">
+  			and Staff_Name like CONCAT('%',#{Staff_Name},'%')
+  		</if>
+  		<if test="staffCompanyPositionCode!=null">
+  			and Staff_Company_Position_Code like CONCAT('%',#{Staff_Company_Position_Code},'%')
+  		</if>
+  	</trim>
+  </select>
+  
+  
+  
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.blx.pojo.StaffExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from staff
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="start!=null and end!=null">
+    	limit #{start},#{end}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from staff
+    where Staff_Id = #{staffId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from staff
+    where Staff_Id = #{staffId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.blx.pojo.StaffExample" >
+    delete from staff
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.blx.pojo.Staff" >
+  	INSERT INTO staff(Staff_Id,Staff_Name,Staff_HeadPortrait_Img_Id,Staff_HeadPortrait_Img_Url,Staff_Sex,Staff_Brithday,Staff_Phone,Staff_Address_Id,Staff_Company_Position_Id,Staff_Company_Position_Code,Staff_Company_Position_Name,Staff_System_Position_Id,Staff_System_Position_Name,Staff_System_Password)
+  	VALUES(DEFAULT,#{staffName},#{staffHeadportraitImgId},#{staffHeadportraitImgUrl},#{staffSex},
+  							#{staffBrithday},#{staffPhone},#{staffAddressId},#{staffCompanyPositionId},
+  							#{staffCompanyPositionCode},#{staffCompanyPositionName},#{staffSystemPositionId},
+  							#{staffSystemPositionName},#{staffSystemPassword});
+   <!--  insert into staff (default,Staff_Name,Staff_HeadPortrait_Img_Id,Staff_HeadPortrait_Img_Url,Staff_Sex,Staff_Brithday,Staff_Phone,Staff_Address_Id,Staff_Company_Position_Id,Staff_Company_Position_Code,Staff_Company_Position_Name,Staff_System_Position_Id,Staff_System_Position_Name,Staff_System_Password)
+    values(#{staffId,jdbcType=INTEGER},#{staffName,jdbcType=VARCHAR},#{staffHeadportraitImgId,jdbcType=INTEGER},
+      #{staffHeadportraitImgUrl,jdbcType=VARCHAR},#{staffSex,jdbcType=INTEGER},#{staffBrithday,jdbcType=DATE},
+      #{staffPhone,jdbcType=VARCHAR},#{staffAddressId,jdbcType=INTEGER},#{staffCompanyPositionId,jdbcType=INTEGER},
+      #{staffCompanyPositionCode,jdbcType=VARCHAR},#{staffCompanyPositionName,jdbcType=VARCHAR},
+      #{staffSystemPositionId,jdbcType=INTEGER},#{staffSystemPositionName,jdbcType=VARCHAR},
+      #{staffSystemPassword,jdbcType=VARCHAR}) -->
+  </insert>
+  <insert id="insertSelective" parameterType="com.blx.pojo.Staff" >
+    insert into staff
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="staffId != null" >
+        Staff_Id,
+      </if>
+      <if test="staffName != null" >
+        Staff_Name,
+      </if>
+      <if test="staffHeadportraitImgId != null" >
+        Staff_HeadPortrait_Img_Id,
+      </if>
+      <if test="staffHeadportraitImgUrl != null" >
+        Staff_HeadPortrait_Img_Url,
+      </if>
+      <if test="staffSex != null" >
+        Staff_Sex,
+      </if>
+      <if test="staffBrithday != null" >
+        Staff_Brithday,
+      </if>
+      <if test="staffPhone != null" >
+        Staff_Phone,
+      </if>
+      <if test="staffAddressId != null" >
+        Staff_Address_Id,
+      </if>
+      <if test="staffCompanyPositionId != null" >
+        Staff_Company_Position_Id,
+      </if>
+      <if test="staffCompanyPositionCode != null" >
+        Staff_Company_Position_Code,
+      </if>
+      <if test="staffCompanyPositionName != null" >
+        Staff_Company_Position_Name,
+      </if>
+      <if test="staffSystemPositionId != null" >
+        Staff_System_Position_Id,
+      </if>
+      <if test="staffSystemPositionName != null" >
+        Staff_System_Position_Name,
+      </if>
+      <if test="staffSystemPassword != null" >
+        Staff_System_Password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="staffId != null" >
+        #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="staffName != null" >
+        #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="staffHeadportraitImgId != null" >
+        #{staffHeadportraitImgId,jdbcType=INTEGER},
+      </if>
+      <if test="staffHeadportraitImgUrl != null" >
+        #{staffHeadportraitImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="staffSex != null" >
+        #{staffSex,jdbcType=INTEGER},
+      </if>
+      <if test="staffBrithday != null" >
+        #{staffBrithday,jdbcType=DATE},
+      </if>
+      <if test="staffPhone != null" >
+        #{staffPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="staffAddressId != null" >
+        #{staffAddressId,jdbcType=INTEGER},
+      </if>
+      <if test="staffCompanyPositionId != null" >
+        #{staffCompanyPositionId,jdbcType=INTEGER},
+      </if>
+      <if test="staffCompanyPositionCode != null" >
+        #{staffCompanyPositionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="staffCompanyPositionName != null" >
+        #{staffCompanyPositionName,jdbcType=VARCHAR},
+      </if>
+      <if test="staffSystemPositionId != null" >
+        #{staffSystemPositionId,jdbcType=INTEGER},
+      </if>
+      <if test="staffSystemPositionName != null" >
+        #{staffSystemPositionName,jdbcType=VARCHAR},
+      </if>
+      <if test="staffSystemPassword != null" >
+        #{staffSystemPassword,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.blx.pojo.StaffExample" resultType="java.lang.Integer" >
+    select count(*) from staff
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update staff
+    <set >
+      <if test="record.staffId != null" >
+        Staff_Id = #{record.staffId,jdbcType=INTEGER},
+      </if>
+      <if test="record.staffName != null" >
+        Staff_Name = #{record.staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.staffHeadportraitImgId != null" >
+        Staff_HeadPortrait_Img_Id = #{record.staffHeadportraitImgId,jdbcType=INTEGER},
+      </if>
+      <if test="record.staffHeadportraitImgUrl != null" >
+        Staff_HeadPortrait_Img_Url = #{record.staffHeadportraitImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.staffSex != null" >
+        Staff_Sex = #{record.staffSex,jdbcType=INTEGER},
+      </if>
+      <if test="record.staffBrithday != null" >
+        Staff_Brithday = #{record.staffBrithday,jdbcType=DATE},
+      </if>
+      <if test="record.staffPhone != null" >
+        Staff_Phone = #{record.staffPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.staffAddressId != null" >
+        Staff_Address_Id = #{record.staffAddressId,jdbcType=INTEGER},
+      </if>
+      <if test="record.staffCompanyPositionId != null" >
+        Staff_Company_Position_Id = #{record.staffCompanyPositionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.staffCompanyPositionCode != null" >
+        Staff_Company_Position_Code = #{record.staffCompanyPositionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.staffCompanyPositionName != null" >
+        Staff_Company_Position_Name = #{record.staffCompanyPositionName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.staffSystemPositionId != null" >
+        Staff_System_Position_Id = #{record.staffSystemPositionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.staffSystemPositionName != null" >
+        Staff_System_Position_Name = #{record.staffSystemPositionName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.staffSystemPassword != null" >
+        Staff_System_Password = #{record.staffSystemPassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update staff
+    set Staff_Id = #{record.staffId,jdbcType=INTEGER},
+      Staff_Name = #{record.staffName,jdbcType=VARCHAR},
+      Staff_HeadPortrait_Img_Id = #{record.staffHeadportraitImgId,jdbcType=INTEGER},
+      Staff_HeadPortrait_Img_Url = #{record.staffHeadportraitImgUrl,jdbcType=VARCHAR},
+      Staff_Sex = #{record.staffSex,jdbcType=INTEGER},
+      Staff_Brithday = #{record.staffBrithday,jdbcType=DATE},
+      Staff_Phone = #{record.staffPhone,jdbcType=VARCHAR},
+      Staff_Address_Id = #{record.staffAddressId,jdbcType=INTEGER},
+      Staff_Company_Position_Id = #{record.staffCompanyPositionId,jdbcType=INTEGER},
+      Staff_Company_Position_Code = #{record.staffCompanyPositionCode,jdbcType=VARCHAR},
+      Staff_Company_Position_Name = #{record.staffCompanyPositionName,jdbcType=VARCHAR},
+      Staff_System_Position_Id = #{record.staffSystemPositionId,jdbcType=INTEGER},
+      Staff_System_Position_Name = #{record.staffSystemPositionName,jdbcType=VARCHAR},
+      Staff_System_Password = #{record.staffSystemPassword,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.blx.pojo.Staff" >
+    update staff
+    <set >
+      <if test="staffName != null" >
+        Staff_Name = #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="staffHeadportraitImgId != null" >
+        Staff_HeadPortrait_Img_Id = #{staffHeadportraitImgId,jdbcType=INTEGER},
+      </if>
+      <if test="staffHeadportraitImgUrl != null" >
+        Staff_HeadPortrait_Img_Url = #{staffHeadportraitImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="staffSex != null" >
+        Staff_Sex = #{staffSex,jdbcType=INTEGER},
+      </if>
+      <if test="staffBrithday != null" >
+        Staff_Brithday = #{staffBrithday,jdbcType=DATE},
+      </if>
+      <if test="staffPhone != null" >
+        Staff_Phone = #{staffPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="staffAddressId != null" >
+        Staff_Address_Id = #{staffAddressId,jdbcType=INTEGER},
+      </if>
+      <if test="staffCompanyPositionId != null" >
+        Staff_Company_Position_Id = #{staffCompanyPositionId,jdbcType=INTEGER},
+      </if>
+      <if test="staffCompanyPositionCode != null" >
+        Staff_Company_Position_Code = #{staffCompanyPositionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="staffCompanyPositionName != null" >
+        Staff_Company_Position_Name = #{staffCompanyPositionName,jdbcType=VARCHAR},
+      </if>
+      <if test="staffSystemPositionId != null" >
+        Staff_System_Position_Id = #{staffSystemPositionId,jdbcType=INTEGER},
+      </if>
+      <if test="staffSystemPositionName != null" >
+        Staff_System_Position_Name = #{staffSystemPositionName,jdbcType=VARCHAR},
+      </if>
+      <if test="staffSystemPassword != null" >
+        Staff_System_Password = #{staffSystemPassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Staff_Id = #{staffId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.blx.pojo.Staff" >
+    update staff
+    set Staff_Name = #{staffName,jdbcType=VARCHAR},
+      Staff_HeadPortrait_Img_Id = #{staffHeadportraitImgId,jdbcType=INTEGER},
+      Staff_HeadPortrait_Img_Url = #{staffHeadportraitImgUrl,jdbcType=VARCHAR},
+      Staff_Sex = #{staffSex,jdbcType=INTEGER},
+      Staff_Brithday = #{staffBrithday,jdbcType=DATE},
+      Staff_Phone = #{staffPhone,jdbcType=VARCHAR},
+      Staff_Address_Id = #{staffAddressId,jdbcType=INTEGER},
+      Staff_Company_Position_Id = #{staffCompanyPositionId,jdbcType=INTEGER},
+      Staff_Company_Position_Code = #{staffCompanyPositionCode,jdbcType=VARCHAR},
+      Staff_Company_Position_Name = #{staffCompanyPositionName,jdbcType=VARCHAR},
+      Staff_System_Position_Id = #{staffSystemPositionId,jdbcType=INTEGER},
+      Staff_System_Position_Name = #{staffSystemPositionName,jdbcType=VARCHAR},
+      Staff_System_Password = #{staffSystemPassword,jdbcType=VARCHAR}
+    where Staff_Id = #{staffId,jdbcType=INTEGER}
+  </update>
+</mapper>

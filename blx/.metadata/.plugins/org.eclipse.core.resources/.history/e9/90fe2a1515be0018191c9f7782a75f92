@@ -1,0 +1,27 @@
+package com.blx.service;
+
+import java.util.List;
+
+import com.blx.pojo.Company;
+import com.blx.pojo.CompanyExample;
+
+/**
+ * 公司类 逻辑层接口
+ * @author Administrator
+ *
+ */
+public interface CompanyService {
+	
+	boolean InsertCompanyByCompany(Company company);
+	
+	
+	boolean DeleteCompanyByCompanyId(Integer companyId);
+	
+	
+	boolean UpdateCompanyByCompany(Company company);
+	
+	
+	List<Company> SelectCompanyByCondition(CompanyExample example);
+	
+	Company SelectCompanyByCompanyId(Integer companyId);
+}

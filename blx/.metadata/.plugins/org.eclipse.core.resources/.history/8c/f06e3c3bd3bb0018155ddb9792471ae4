@@ -1,0 +1,11 @@
+package com.blx.service;
+
+import com.blx.pojo.Staff;
+/**
+ * 	员工 逻辑层接口
+ * */
+public interface StaffService {
+
+	Staff login(String loginPhone, String loginCode,String loginPassword);
+	
+}
